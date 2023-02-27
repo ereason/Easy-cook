@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
+<<<<<<< HEAD
         window.rootViewController = WelcomeViewController()
+=======
+        window.rootViewController = ReciptsListVC()
+>>>>>>> 9198b26 (Create a reusable class for Item collection;)
         self.window = window
     }
 
