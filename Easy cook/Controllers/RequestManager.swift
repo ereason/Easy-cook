@@ -1,10 +1,3 @@
-//
-//  requestManager.swift
-//  Easy cook
-//
-//  Created by George on 28.02.2023.
-//
-
 import Foundation
 
 protocol RequestManagerDelegate{
@@ -15,7 +8,7 @@ protocol RequestManagerDelegate{
 struct RequestManager{
     var delegate: RequestManagerDelegate?
     
-    let apiKey = Secrets.API_KEY
+    let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
     func getURL(recipeId: Int)->String{
         return "https://api.spoonacular.com/recipes/\(recipeId)/information?apiKey=\(apiKey)"
     }

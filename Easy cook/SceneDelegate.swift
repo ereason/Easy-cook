@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Easy cook
-//
-//  Created by George on 26.02.2023.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -18,11 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
-<<<<<<< HEAD
+
         window.rootViewController = WelcomeViewController()
-=======
-        window.rootViewController = ReciptsListVC()
->>>>>>> 9198b26 (Create a reusable class for Item collection;)
+        //window.rootViewController = ReciptsListVC()
+        //window.rootViewController = RecipeViewController()
+        
         self.window = window
     }
 

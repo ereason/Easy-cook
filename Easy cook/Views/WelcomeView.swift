@@ -1,10 +1,3 @@
-//
-//  WelcomeView.swift
-//  Easy cook
-//
-//  Created by Sergey Azimov on 27.02.2023.
-//
-
 import UIKit
 
 class WelcomeView: UIView {

@@ -1,10 +1,3 @@
-//
-//  UIFont + Extensions.swift
-//  Easy cook
-//
-//  Created by Sergey Azimov on 28.02.2023.
-//
-
 import UIKit
 
 extension UIFont {

@@ -1,10 +1,3 @@
-//
-//  ReciptsListVC.swift
-//  Easy cook
-//
-//  Created by иван Бирюков on 27.02.2023.
-//
-
 import UIKit
 
 class ReciptsListVC: UIViewController {

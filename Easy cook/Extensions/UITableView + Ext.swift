@@ -1,10 +1,3 @@
-//
-//  UITableView + Ext.swift
-//  Easy cook
-//
-//  Created by иван Бирюков on 28.02.2023.
-//
-
 import UIKit
 
 extension UITableView {

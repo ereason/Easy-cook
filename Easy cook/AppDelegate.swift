@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Easy cook
-//
-//  Created by George on 26.02.2023.
-//
-
 import UIKit
 
 @main
