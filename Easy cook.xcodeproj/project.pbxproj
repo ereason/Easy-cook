@@ -13,6 +13,9 @@
 		562944DF29AE1F27005D9EC3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 562944DE29AE1F27005D9EC3 /* Poppins-Regular.ttf */; };
 		5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */; };
 		5658AB4729ACD684004F8CFB /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4629ACD684004F8CFB /* WelcomeView.swift */; };
+		5E2121FE29AE3A3200584799 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2121FD29AE3A3200584799 /* RequestManager.swift */; };
+		5E21220029AE3AC400584799 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2121FF29AE3AC400584799 /* RecipeData.swift */; };
+		5E21220229AE3AF700584799 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E21220129AE3AF700584799 /* RecipeModel.swift */; };
 		5EAA6C6029AB279B009A8E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA6C5F29AB279B009A8E10 /* AppDelegate.swift */; };
 		5EAA6C6229AB279B009A8E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA6C6129AB279B009A8E10 /* SceneDelegate.swift */; };
 		5EAA6C6429AB279B009A8E10 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA6C6329AB279B009A8E10 /* RecipeViewController.swift */; };
@@ -27,6 +30,9 @@
 		562944DE29AE1F27005D9EC3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		5658AB4629ACD684004F8CFB /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		5E2121FD29AE3A3200584799 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		5E2121FF29AE3AC400584799 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
+		5E21220129AE3AF700584799 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		5EAA6C5C29AB279B009A8E10 /* Easy cook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy cook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAA6C5F29AB279B009A8E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA6C6129AB279B009A8E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 				5EAA6C6D29AB279C009A8E10 /* Info.plist */,
 				5E21220529AE449B00584799 /* Secrets.swift */,
 				562944D829AE1AE1005D9EC3 /* Extensions */,
+				5E2121FD29AE3A3200584799 /* RequestManager.swift */,
+				5E2121FF29AE3AC400584799 /* RecipeData.swift */,
+				5E21220129AE3AF700584799 /* RecipeModel.swift */,
 			);
 			path = "Easy cook";
 			sourceTree = "<group>";
@@ -178,7 +187,10 @@
 				5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */,
 				5EAA6C6429AB279B009A8E10 /* RecipeViewController.swift in Sources */,
 				5EAA6C6029AB279B009A8E10 /* AppDelegate.swift in Sources */,
+				5E21220029AE3AC400584799 /* RecipeData.swift in Sources */,
 				5EAA6C6229AB279B009A8E10 /* SceneDelegate.swift in Sources */,
+				5E2121FE29AE3A3200584799 /* RequestManager.swift in Sources */,
+				5E21220229AE3AF700584799 /* RecipeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
