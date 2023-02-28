@@ -37,7 +37,7 @@
 		5E2121FF29AE3AC400584799 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		5E21220129AE3AF700584799 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		5E21220529AE449B00584799 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		5EAA6C5C29AB279B009A8E10 /* Easy cook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy cook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EAA6C5C29AB279B009A8E10 /* Easy-cook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy-cook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAA6C5F29AB279B009A8E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA6C6129AB279B009A8E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5EAA6C6329AB279B009A8E10 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		5EAA6C5329AB279B009A8E10 = {
 			isa = PBXGroup;
 			children = (
-				5EAA6C5E29AB279B009A8E10 /* Easy cook */,
+				5EAA6C5E29AB279B009A8E10 /* Easy-cook */,
 				5EAA6C5D29AB279B009A8E10 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,12 +107,12 @@
 		5EAA6C5D29AB279B009A8E10 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5EAA6C5C29AB279B009A8E10 /* Easy cook.app */,
+				5EAA6C5C29AB279B009A8E10 /* Easy-cook.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5EAA6C5E29AB279B009A8E10 /* Easy cook */ = {
+		5EAA6C5E29AB279B009A8E10 /* Easy-cook */ = {
 			isa = PBXGroup;
 			children = (
 				5EAA6C5F29AB279B009A8E10 /* AppDelegate.swift */,
@@ -125,7 +125,7 @@
 				5EAA6C6D29AB279C009A8E10 /* Info.plist */,
 				5E21220529AE449B00584799 /* Secrets.swift */,
 			);
-			path = "Easy cook";
+			path = "Easy-cook";
 			sourceTree = "<group>";
 		};
 		5EF3F88029AE905C00E2B1D7 /* Views */ = {
@@ -140,9 +140,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5EAA6C5B29AB279B009A8E10 /* Easy cook */ = {
+		5EAA6C5B29AB279B009A8E10 /* Easy-cook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5EAA6C7029AB279C009A8E10 /* Build configuration list for PBXNativeTarget "Easy cook" */;
+			buildConfigurationList = 5EAA6C7029AB279C009A8E10 /* Build configuration list for PBXNativeTarget "Easy-cook" */;
 			buildPhases = (
 				5EAA6C5829AB279B009A8E10 /* Sources */,
 				5EAA6C5929AB279B009A8E10 /* Frameworks */,
@@ -152,9 +152,9 @@
 			);
 			dependencies = (
 			);
-			name = "Easy cook";
+			name = "Easy-cook";
 			productName = "Easy cook";
-			productReference = 5EAA6C5C29AB279B009A8E10 /* Easy cook.app */;
+			productReference = 5EAA6C5C29AB279B009A8E10 /* Easy-cook.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -172,7 +172,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5EAA6C5729AB279B009A8E10 /* Build configuration list for PBXProject "Easy cook" */;
+			buildConfigurationList = 5EAA6C5729AB279B009A8E10 /* Build configuration list for PBXProject "Easy-cook" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -185,7 +185,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5EAA6C5B29AB279B009A8E10 /* Easy cook */,
+				5EAA6C5B29AB279B009A8E10 /* Easy-cook */,
 			);
 		};
 /* End PBXProject section */
@@ -362,7 +362,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8RR26756PN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Easy cook/Info.plist";
+				INFOPLIST_FILE = "Easy-cook/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -390,7 +390,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8RR26756PN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Easy cook/Info.plist";
+				INFOPLIST_FILE = "Easy-cook/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -412,7 +412,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5EAA6C5729AB279B009A8E10 /* Build configuration list for PBXProject "Easy cook" */ = {
+		5EAA6C5729AB279B009A8E10 /* Build configuration list for PBXProject "Easy-cook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5EAA6C6E29AB279C009A8E10 /* Debug */,
@@ -421,7 +421,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5EAA6C7029AB279C009A8E10 /* Build configuration list for PBXNativeTarget "Easy cook" */ = {
+		5EAA6C7029AB279C009A8E10 /* Build configuration list for PBXNativeTarget "Easy-cook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5EAA6C7129AB279C009A8E10 /* Debug */,
