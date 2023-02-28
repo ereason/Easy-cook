@@ -37,9 +37,9 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc private func buttonTapped(button: UIButton) {
-         let mainVC = ViewController()
-         mainVC.modalPresentationStyle = .fullScreen
-        present(mainVC, animated: true)
+         //let mainVC = ...
+         //mainVC.modalPresentationStyle = .fullScreen
+        //present(mainVC, animated: true)
     }
     
 }
