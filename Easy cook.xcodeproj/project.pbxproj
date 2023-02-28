@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5E21220629AE449B00584799 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E21220529AE449B00584799 /* Secrets.swift */; };
+		562944DA29AE1B16005D9EC3 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562944D929AE1B16005D9EC3 /* UIFont + Extensions.swift */; };
+		562944DD29AE1D64005D9EC3 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 562944DC29AE1D64005D9EC3 /* Poppins-Bold.ttf */; };
+		562944DF29AE1F27005D9EC3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 562944DE29AE1F27005D9EC3 /* Poppins-Regular.ttf */; };
+		5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */; };
+		5658AB4729ACD684004F8CFB /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4629ACD684004F8CFB /* WelcomeView.swift */; };
 		5EAA6C6029AB279B009A8E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA6C5F29AB279B009A8E10 /* AppDelegate.swift */; };
 		5EAA6C6229AB279B009A8E10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA6C6129AB279B009A8E10 /* SceneDelegate.swift */; };
 		5EAA6C6429AB279B009A8E10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA6C6329AB279B009A8E10 /* ViewController.swift */; };
@@ -17,6 +22,11 @@
 
 /* Begin PBXFileReference section */
 		5E21220529AE449B00584799 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		562944D929AE1B16005D9EC3 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
+		562944DC29AE1D64005D9EC3 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		562944DE29AE1F27005D9EC3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		5658AB4629ACD684004F8CFB /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		5EAA6C5C29AB279B009A8E10 /* Easy cook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy cook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAA6C5F29AB279B009A8E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAA6C6129AB279B009A8E10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,10 +47,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		562944D829AE1AE1005D9EC3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				562944D929AE1B16005D9EC3 /* UIFont + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		562944DB29AE1C87005D9EC3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				562944DC29AE1D64005D9EC3 /* Poppins-Bold.ttf */,
+				562944DE29AE1F27005D9EC3 /* Poppins-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5EAA6C5329AB279B009A8E10 = {
 			isa = PBXGroup;
 			children = (
 				5EAA6C5E29AB279B009A8E10 /* Easy cook */,
+				562944DB29AE1C87005D9EC3 /* Fonts */,
 				5EAA6C5D29AB279B009A8E10 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,12 +85,15 @@
 			isa = PBXGroup;
 			children = (
 				5EAA6C5F29AB279B009A8E10 /* AppDelegate.swift */,
-				5EAA6C6129AB279B009A8E10 /* SceneDelegate.swift */,
+				5658AB4629ACD684004F8CFB /* WelcomeView.swift */,
+				5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */,
 				5EAA6C6329AB279B009A8E10 /* ViewController.swift */,
+				5EAA6C6129AB279B009A8E10 /* SceneDelegate.swift */,
 				5EAA6C6829AB279C009A8E10 /* Assets.xcassets */,
 				5EAA6C6A29AB279C009A8E10 /* LaunchScreen.storyboard */,
 				5EAA6C6D29AB279C009A8E10 /* Info.plist */,
 				5E21220529AE449B00584799 /* Secrets.swift */,
+				562944D829AE1AE1005D9EC3 /* Extensions */,
 			);
 			path = "Easy cook";
 			sourceTree = "<group>";
@@ -126,7 +157,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EAA6C6C29AB279C009A8E10 /* LaunchScreen.storyboard in Resources */,
+				562944DD29AE1D64005D9EC3 /* Poppins-Bold.ttf in Resources */,
 				5EAA6C6929AB279C009A8E10 /* Assets.xcassets in Resources */,
+				562944DF29AE1F27005D9EC3 /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				562944DA29AE1B16005D9EC3 /* UIFont + Extensions.swift in Sources */,
+				5658AB4729ACD684004F8CFB /* WelcomeView.swift in Sources */,
 				5EAA6C6429AB279B009A8E10 /* ViewController.swift in Sources */,
 				5E21220629AE449B00584799 /* Secrets.swift in Sources */,
+				5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */,
 				5EAA6C6029AB279B009A8E10 /* AppDelegate.swift in Sources */,
 				5EAA6C6229AB279B009A8E10 /* SceneDelegate.swift in Sources */,
 			);
