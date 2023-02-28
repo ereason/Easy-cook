@@ -3,6 +3,8 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     private let welcomeView = WelcomeView()
+    private let userSettings = FavoriteManager()
+    
     
     private  let getStartedButton: UIButton = {
         let button = UIButton(type: .system)
@@ -33,6 +35,7 @@ class WelcomeViewController: UIViewController {
          //let mainVC = ...
          //mainVC.modalPresentationStyle = .fullScreen
         //present(mainVC, animated: true)
+
     }
     
 }
@@ -42,8 +45,8 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController {
    private func setConstraints() {
         NSLayoutConstraint.activate([
-            getStartedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             getStartedButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            getStartedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             
             getStartedButton.widthAnchor.constraint(equalToConstant: 150),
             getStartedButton.heightAnchor.constraint(equalToConstant: 60),
