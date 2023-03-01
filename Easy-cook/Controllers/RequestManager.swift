@@ -1,7 +1,7 @@
 import Foundation
 
 protocol RequestManagerDelegate{
-    func didUpdateWeather(_ requestManager: RequestManager, recipe: RecipeModel)
+    func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel)
     func didFailWithError(error: Error)
 }
 
@@ -10,11 +10,11 @@ struct RequestManager{
     
     let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
     func getURL(recipeId: Int)->String{
-        return "https://api.spoonacular.com/recipes/\(recipeId)/information?apiKey=\(apiKey)"
+        return "https://api.spoonacular.com/recipes/\(recipeId)/information?apiKey=\(apiKey)&includeNutrition=true"
     }
     
     
-    func fetchRecipe(recipeId: Int) {
+    func fetchRecipe(_ recipeId: Int) {
         performRequest(with: getURL(recipeId: recipeId))
     }
     
@@ -28,7 +28,7 @@ struct RequestManager{
                 }
                 if let safeData = data {
                     if let recipe = self.parseJSON(safeData) {
-                        self.delegate?.didUpdateWeather(self, recipe: recipe)
+                        self.delegate?.didUpdateRecipe(self, recipe: recipe)
                     }
                 }
             }
@@ -41,9 +41,8 @@ struct RequestManager{
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(RecipeData.self, from: recipeData)
-            let title = decodedData.title
             
-            return RecipeModel(title: title)
+            return RecipeModel(data: decodedData)
             
         } catch {
             delegate?.didFailWithError(error: error)
