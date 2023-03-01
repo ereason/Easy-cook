@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class RecipeViewController: UIViewController {
   
@@ -166,7 +167,11 @@ extension RecipeViewController: RequestManagerDelegate{
     
 
     func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel) {
-        print(recipe)
+        DispatchQueue.main.async {
+            let url = URL(string: recipe.imageURL)
+            print(recipe)
+            self.imageView.kf.setImage(with: url)
+        }
     }
     
     func didFailWithError(error: Error) {

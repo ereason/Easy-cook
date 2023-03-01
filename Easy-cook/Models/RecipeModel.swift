@@ -5,11 +5,16 @@ struct RecipeModel {
   
     init(data: RecipeData){
         self.title=data.title
-        self.imageURL=data.image
+        
+        self.imageURL=data.image.replacingOccurrences(of: "http:", with: "https:")
+        
         self.imageType=data.imageType
         self.servings=data.servings
+    
+        self.sourceURL = data.sourceURL.replacingOccurrences(of: "http:", with: "https:")
+
         self.Likes=data.aggregateLikes
-        self.sourceURL = data.sourceURL
+      
         self.steps = []
         self.ingredients = []
         
