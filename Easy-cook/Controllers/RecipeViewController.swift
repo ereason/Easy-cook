@@ -1,11 +1,13 @@
 import UIKit
 
 class RecipeViewController: UIViewController {
+  
+    var requestManager = RequestManager()
     
     let scrollView: UIScrollView = { // scrolling View
         let scrollView = UIScrollView(frame: .zero)
         scrollView.showsVerticalScrollIndicator = false
-    
+
         return scrollView
     }()
     
@@ -90,6 +92,8 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
+        requestManager.delegate = self
+        requestManager.fetchRecipe(636729)
     }
 }
 
@@ -129,7 +133,7 @@ extension RecipeViewController {
         }
 
         
-        print("1")
+        //print("1")
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -155,5 +159,18 @@ extension RecipeViewController {
         ])
         
 
+    }
+}
+
+extension RecipeViewController: RequestManagerDelegate{
+    
+
+    func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel) {
+        print(recipe)
+    }
+    
+    func didFailWithError(error: Error) {
+        
+        print(error)
     }
 }
