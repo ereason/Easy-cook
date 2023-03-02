@@ -2,9 +2,12 @@ import UIKit
 
 class ReciptsListVC: UIViewController, RequestListRecipeDelegate {
     func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel) {
-        recipeList.results.forEach{
-            self.reciepts.append($0)
+    
+        DispatchQueue.main.async {
+            self.reciepts = recipeList.results
+            self.tableView.reloadData()
         }
+        
         print(recipeList)
     }
     
@@ -26,6 +29,7 @@ class ReciptsListVC: UIViewController, RequestListRecipeDelegate {
         manager.delegate = self
         // updating data for table view
         manager.fetchRecipe(number: 10, offset: 0)
+    //    reciepts = fetchData()
         configureTableView()
     }
     
@@ -67,25 +71,8 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
     }
     // this method will run when the user click at row (so we will open segue)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-}
-
-
-// MARK: - Generating Example Data for preview. After we should change it to be from Network Call.
-extension ReciptsListVC {
-    func fetchData() -> [RecipeListModel] {
-//        let reciept1 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
-//        let reciept2 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
-//        let reciept3 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
-//        let reciept4 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
-//        let reciept5 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
-//        let reciept6 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
-//        let reciept7 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
-//        let reciept8 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
-//        let reciept9 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
-//        let reciept10 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
         
-        return []//[reciept1, reciept2, reciept3, reciept4, reciept5, reciept6, reciept7, reciept8, reciept9, reciept10]
+        present(RecipeViewController(reciepts[indexPath.row].id), animated: true, completion: nil)
+      //  print(reciepts[indexPath.row].id)
     }
 }

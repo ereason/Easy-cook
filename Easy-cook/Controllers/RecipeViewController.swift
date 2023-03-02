@@ -79,12 +79,28 @@ class RecipeViewController: UIViewController {
         return label
     }()
     
+    var id: Int
+    
+    init(_ id: Int) {
+        self.id = id
+      
+        super.init(nibName: nil, bundle: nil)
+       }
+    
+    required init?(coder aDecoder: NSCoder) {
+
+        self.id = 10000
+    
+        super.init(coder: aDecoder)
+      }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
         requestManager.delegate = self
-        requestManager.fetchRecipe(636729)
+
+        requestManager.fetchRecipe(id)
     }
 }
 
@@ -150,26 +166,13 @@ extension RecipeViewController {
 extension RecipeViewController: RequestManagerDelegate{
     
     func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel) {
+
         DispatchQueue.main.async {
             
             self.titleLabel.text = recipe.title // title
             
-            // image
-            if let imageUrl = URL(string: "https://spoonacular.com/recipeImages/636729-556x370.jpg") {
-                URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                    if let error = error {
-                        print("Error downloading image: \(error.localizedDescription)")
-                        return
-                    }
-                    if let imageData = data, let image = UIImage(data: imageData) {
-                        DispatchQueue.main.async {
-                            // Update the UI on the main thread
-                            self.imageView.image = image
-                        }
-                    }
-                }.resume()
-            }
-            
+            self.imageView.kf.setImage(with: URL(string: recipe.imageURL))
+                 
             // info labels
             self.timeLabel.text = "\(recipe.minutes) \nminutes"
             self.servingLabel.text = "\(recipe.servings) \nservings"
