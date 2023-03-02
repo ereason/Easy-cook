@@ -1,7 +1,6 @@
 import UIKit
 
 extension UIFont {
-   
     
     //regular
     static func poppinsRegular16() -> UIFont? {
@@ -16,6 +15,4 @@ extension UIFont {
     static func poppinsBold50() -> UIFont? {
         return UIFont.init(name: "Poppins-Bold", size: 50)
     }
-    
-    
 }
