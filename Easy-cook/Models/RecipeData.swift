@@ -791,7 +791,9 @@ struct ProductMatch: Codable {
     let id: Int
     let title, description, price: String
     let imageURL: String
-    let averageRating, ratingCount: Int
+//    let averageRating, ratingCount: Int // !
+    let averageRating: Double
+    let ratingCount: Int // new
     let score: Double
     let link: String
 
@@ -826,7 +828,8 @@ extension ProductMatch {
         description: String? = nil,
         price: String? = nil,
         imageURL: String? = nil,
-        averageRating: Int? = nil,
+//        averageRating: Int? = nil,
+        averageRating: Double? = nil, // new
         ratingCount: Int? = nil,
         score: Double? = nil,
         link: String? = nil
