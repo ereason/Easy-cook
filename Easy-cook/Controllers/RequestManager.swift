@@ -13,7 +13,6 @@ struct RequestManager{
         return "https://api.spoonacular.com/recipes/\(recipeId)/information?apiKey=\(apiKey)&includeNutrition=true"
     }
     
-    
     func fetchRecipe(_ recipeId: Int) {
         performRequest(with: getURL(recipeId: recipeId))
     }
