@@ -19,7 +19,6 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
-    
     override func loadView() {
         view = welcomeView
         view.addSubview(getStartedButton)
@@ -32,16 +31,14 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc private func buttonTapped(button: UIButton) {
-         //let mainVC = ...
-         //mainVC.modalPresentationStyle = .fullScreen
-        //present(mainVC, animated: true)
-
+         let mainVC = NavigationViewController()
+         mainVC.modalPresentationStyle = .fullScreen
+        present(mainVC, animated: true)
     }
     
 }
 
 //MARK: - SetConstraints
-
 extension WelcomeViewController {
    private func setConstraints() {
         NSLayoutConstraint.activate([

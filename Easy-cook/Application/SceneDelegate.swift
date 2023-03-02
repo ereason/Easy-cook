@@ -12,10 +12,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
 
-        //window.rootViewController = WelcomeViewController()
-        //window.rootViewController = ReciptsListVC()
-        window.rootViewController = RecipeViewController()
-        
+        window.rootViewController = WelcomeViewController()
+//        window.rootViewController = ReciptsListVC()
+//        window.rootViewController = RecipeViewController()
         self.window = window
     }
 

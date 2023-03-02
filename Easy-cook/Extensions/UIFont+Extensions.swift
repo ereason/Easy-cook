@@ -1,7 +1,6 @@
 import UIKit
 
 extension UIFont {
-   
     
     //regular
     static func poppinsRegular16() -> UIFont? {
