@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class TableViewPrototypeCell: UITableViewCell {
     
@@ -20,8 +21,9 @@ class TableViewPrototypeCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(recieptList: RecieptListModel) {
-        recieptImageView.image = recieptList.image
+    func set(recieptList: ResultModel) {
+        recieptImageView.kf.setImage(with: URL(string: recieptList.image))
+        //recieptImageView.image =
         recieptTitleLabel.text = recieptList.title
     }
     

@@ -1,9 +1,20 @@
 import UIKit
 
-class ReciptsListVC: UIViewController {
+class ReciptsListVC: UIViewController, RequestListRecipeDelegate {
+    func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel) {
+        recipeList.results.forEach{
+            self.reciepts.append($0)
+        }
+        print(recipeList)
+    }
     
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    var manager = RequestListRecipesManager()
     var tableView = UITableView()
-    var reciepts: [RecieptListModel] = []
+    var reciepts: [ResultModel] = []
     
     struct Cells {
         static let recieptCell = "TableViewPrototypeCell"
@@ -12,8 +23,9 @@ class ReciptsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        manager.delegate = self
         // updating data for table view
-        reciepts = fetchData()
+        manager.fetchRecipe(number: 10, offset: 0)
         configureTableView()
     }
     
@@ -62,18 +74,18 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Generating Example Data for preview. After we should change it to be from Network Call.
 extension ReciptsListVC {
-    func fetchData() -> [RecieptListModel] {
-        let reciept1 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
-        let reciept2 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
-        let reciept3 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
-        let reciept4 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
-        let reciept5 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
-        let reciept6 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
-        let reciept7 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
-        let reciept8 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
-        let reciept9 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
-        let reciept10 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
+    func fetchData() -> [RecipeListModel] {
+//        let reciept1 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
+//        let reciept2 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
+//        let reciept3 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
+//        let reciept4 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
+//        let reciept5 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
+//        let reciept6 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
+//        let reciept7 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
+//        let reciept8 = RecieptListModel(image: UIImage(named: "foodPictureExample")!, title: "EggCookedfifteenMINUTS")
+//        let reciept9 = RecieptListModel(image: UIImage(named: "123picture")!, title: "IDk whats is it but looks tasty")
+//        let reciept10 = RecieptListModel(image: UIImage(named: "reciptExampleImage")!, title: "Home made Shwarma")
         
-        return [reciept1, reciept2, reciept3, reciept4, reciept5, reciept6, reciept7, reciept8, reciept9, reciept10]
+        return []//[reciept1, reciept2, reciept3, reciept4, reciept5, reciept6, reciept7, reciept8, reciept9, reciept10]
     }
 }
