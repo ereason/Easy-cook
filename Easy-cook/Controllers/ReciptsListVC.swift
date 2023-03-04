@@ -73,6 +73,6 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         present(RecipeViewController(reciepts[indexPath.row].id), animated: true, completion: nil)
-      //  print(reciepts[indexPath.row].id)
+    
     }
 }

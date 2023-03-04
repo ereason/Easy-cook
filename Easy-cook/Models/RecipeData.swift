@@ -7,13 +7,13 @@ import Foundation
 
 // MARK: - RecipeData
 struct RecipeData: Codable {
-    let vegetarian, vegan, glutenFree, dairyFree: Bool
-    let veryHealthy, cheap, veryPopular, sustainable: Bool
-    let lowFodmap: Bool
-    let weightWatcherSmartPoints: Int
-    let gaps: String
+    let vegetarian, vegan, glutenFree, dairyFree: Bool?
+    let veryHealthy, cheap, veryPopular, sustainable: Bool?
+    let lowFodmap: Bool?
+    let weightWatcherSmartPoints: Int?
+    let gaps: String?
     let preparationMinutes, cookingMinutes, aggregateLikes, healthScore: Int
-    let creditsText, license, sourceName: String
+    let creditsText, license, sourceName: String?
     let pricePerServing: Double
     let extendedIngredients: [ExtendedIngredient]
     let id: Int
@@ -337,7 +337,8 @@ extension Length {
 // MARK: - ExtendedIngredient
 struct ExtendedIngredient: Codable {
     let id: Int
-    let aisle, image, consistency, name: String
+    let aisle: String?
+    let image, consistency, name: String
     let nameClean, original, originalName: String
     let amount: Double
     let unit: String
@@ -742,9 +743,9 @@ extension WeightPerServing {
 
 // MARK: - WinePairing
 struct WinePairing: Codable {
-    let pairedWines: [String]
-    let pairingText: String
-    let productMatches: [ProductMatch]
+    let pairedWines: [String]?
+    let pairingText: String?
+    let productMatches: [ProductMatch]?
 }
 
 // MARK: WinePairing convenience initializers and mutators
