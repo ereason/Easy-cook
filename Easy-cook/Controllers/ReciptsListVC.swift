@@ -72,7 +72,7 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
     // this method will run when the user click at row (so we will open segue)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print(reciepts[indexPath.row].id)
         present(RecipeViewController(reciepts[indexPath.row].id), animated: true, completion: nil)
-    
     }
 }

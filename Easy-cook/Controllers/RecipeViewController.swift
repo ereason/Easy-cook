@@ -190,11 +190,11 @@ extension RecipeViewController: RequestManagerDelegate{
             self.ingredientsLabel.attributedText = ingredientString
             
             // recipe label
-            var recipeText = "\(recipe.steps)"
-            for _ in 1...2 {
-                recipeText.removeFirst()
-                recipeText.removeLast()
-            }
+            var recipeText = recipe.steps.isEmpty ? "\(recipe.sourceURL)" : "\(recipe.steps)"
+      
+            let regex = try! NSRegularExpression(pattern: "(^\\[\"|\"\\]$)", options: .caseInsensitive)
+            recipeText = regex.stringByReplacingMatches(in: recipeText, options: [], range: NSRange(0..<recipeText.utf16.count), withTemplate: "")
+            
             self.recipeLabel.text! += "\n\(recipeText)"
             
             let recipeString = NSMutableAttributedString(string: self.recipeLabel.text!)

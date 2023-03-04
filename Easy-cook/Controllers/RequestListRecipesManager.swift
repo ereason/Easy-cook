@@ -17,7 +17,7 @@ struct RequestListRecipesManager{
     
     let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
     func getURL(number: Int, offset: Int)->String{
-        return "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularit&offset=\(offset)&apiKey=\(apiKey)"
+        return "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularity&offset=\(offset)&apiKey=\(apiKey)"
         //return "https://api.spoonacular.com/recipes/\(recipeId)/information?apiKey=\(apiKey)&includeNutrition=true"
         //https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularit&offset=\(offset)&apiKey=\(apiKey)
     }

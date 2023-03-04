@@ -15,8 +15,12 @@ struct RecipeModel {
         self.steps = []
         self.ingredients = []
         self.minutes = data.readyInMinutes
-        data.analyzedInstructions[0].steps.forEach{
-            steps.append($0.step)
+        
+      
+        if (!data.analyzedInstructions.isEmpty){
+            data.analyzedInstructions[0].steps.forEach{
+                steps.append($0.step)
+            }
         }
         
         data.extendedIngredients.forEach{
