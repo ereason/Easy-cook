@@ -20,6 +20,10 @@ extension UIFont {
         return UIFont.init(name: "Poppins-Bold", size: 40)
     }
     
+    static func poppinsBold35() -> UIFont? {
+        return UIFont.init(name: "Poppins-Bold", size: 35)
+    }
+    
     static func poppinsBold18() -> UIFont? {
         return UIFont.init(name: "Poppins-Bold", size: 18)
     }
