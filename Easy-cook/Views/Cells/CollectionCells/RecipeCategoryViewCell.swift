@@ -10,7 +10,7 @@ import UIKit
 
 class RecipeCategoryViewCell: UICollectionViewCell {
 
-    static let reuseId = "recipeCategoryViewCell"
+
 
     let mainImage: UIImageView = {
         let image = UIImageView()

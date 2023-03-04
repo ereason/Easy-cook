@@ -45,7 +45,7 @@ extension RecipeData {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -160,7 +160,7 @@ extension AnalyzedInstruction {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -205,7 +205,7 @@ extension Step {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -254,7 +254,7 @@ extension Ent {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -301,7 +301,7 @@ extension Length {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -350,7 +350,7 @@ extension ExtendedIngredient {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -412,7 +412,7 @@ extension Measures {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -455,7 +455,7 @@ extension Metric {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -502,7 +502,7 @@ extension Nutrition {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -552,7 +552,7 @@ extension CaloricBreakdown {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -599,7 +599,7 @@ extension Flavonoid {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -659,7 +659,7 @@ extension Ingredient {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -708,7 +708,7 @@ extension WeightPerServing {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -752,7 +752,7 @@ extension WinePairing {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -809,7 +809,7 @@ extension ProductMatch {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }

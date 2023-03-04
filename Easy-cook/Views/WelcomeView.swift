@@ -4,7 +4,7 @@ class WelcomeView: UIView {
     
     private let backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
-        backgroundImage.image = UIImage(named: "BackgroundWV" )
+        backgroundImage.image = UIImage(named: K.mainViewBackgroundImage )
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         return backgroundImage
     }()

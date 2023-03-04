@@ -9,8 +9,6 @@ import UIKit
 
 class CategoryViewCell: UICollectionViewCell {
 
-    static let reuseId = "categoryViewCell"
-
     let backgroundImage: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 10

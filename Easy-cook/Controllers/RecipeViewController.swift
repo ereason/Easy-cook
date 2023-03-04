@@ -22,7 +22,7 @@ class RecipeViewController: UIViewController {
     // like button
     var likesButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+        button.setBackgroundImage(UIImage(systemName: K.systemHeartImage), for: .normal)
         button.tintColor = .red
         button.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         return button
@@ -112,7 +112,7 @@ class RecipeViewController: UIViewController {
     
     @objc func likeButtonPressed() {
         print("like")
-        likesButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+        likesButton.setBackgroundImage(UIImage(systemName: K.systemFillHeartImage), for: .normal)
     }
 }
 

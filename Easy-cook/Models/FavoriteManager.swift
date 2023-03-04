@@ -9,12 +9,11 @@ final class FavoriteManager {
     
     static let shared = FavoriteManager()
     
-    private let idFavorite = "idFavorite"
     private let defaults = UserDefaults.standard
     
     var arrayFavoriteRecipesId:[IdRecipes]{
         get {
-            if let data = defaults.value(forKey: idFavorite) as? Data {
+            if let data = defaults.value(forKey: K.idFavorite) as? Data {
                 return try! PropertyListDecoder().decode([IdRecipes].self, from: data)
             } else {
                 return [IdRecipes]()
@@ -22,7 +21,7 @@ final class FavoriteManager {
         }
         set {
             if let data = try? PropertyListEncoder().encode(newValue) {
-                defaults.set(data, forKey: idFavorite)
+                defaults.set(data, forKey: K.idFavorite)
             }
         }
         

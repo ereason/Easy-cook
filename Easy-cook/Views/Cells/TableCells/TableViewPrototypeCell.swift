@@ -47,7 +47,7 @@ class TableViewPrototypeCell: UITableViewCell {
     }
     
     func configureRecieptLikeButton() {
-        recieptLikeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        recieptLikeButton.setImage(UIImage(systemName: K.systemHeartImage), for: .normal)
         recieptLikeButton.setAttributedTitle(nil, for: .normal)
         recieptLikeButton.addTarget(self, action: #selector(recieptLikeButtonPressed), for: .touchUpInside)
     }
