@@ -1,6 +1,6 @@
 class Secrets{
 
-    static let API_KEY = "58b8e03657924c24a1f73d72a3045d4f"
+    static let API_KEY = "96e9dcad31254d1fb414fd818ca07ad0"
     
     @available(*, unavailable) private init() {}
 }
