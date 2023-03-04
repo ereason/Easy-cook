@@ -26,7 +26,7 @@ class CategoryCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
 
         delegate = self
         dataSource = self
-        register(CategoryViewCell.self, forCellWithReuseIdentifier: CategoryViewCell.reuseId)
+        register(CategoryViewCell.self, forCellWithReuseIdentifier: K.reuseIdCategoryVC)
     }
 
     required init?(coder: NSCoder) {
@@ -40,7 +40,7 @@ class CategoryCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
 
 // MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: CategoryViewCell.reuseId, for: indexPath) as! CategoryViewCell
+        let cell = dequeueReusableCell(withReuseIdentifier: K.reuseIdCategoryVC, for: indexPath) as! CategoryViewCell
         cell.recipeLabel.text = cells[indexPath.row].title
         return cell
     }
