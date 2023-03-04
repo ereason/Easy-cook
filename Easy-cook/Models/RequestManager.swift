@@ -1,10 +1,12 @@
 import Foundation
 
+// MARK: - RequestManagerDelegate
 protocol RequestManagerDelegate{
     func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel)
     func didFailWithError(error: Error)
 }
 
+// MARK: - RequestManager
 struct RequestManager{
     var delegate: RequestManagerDelegate?
     
@@ -42,7 +44,6 @@ struct RequestManager{
             let decodedData = try decoder.decode(RecipeData.self, from: recipeData)
             
             return RecipeModel(data: decodedData)
-            
         } catch {
             delegate?.didFailWithError(error: error)
             return nil

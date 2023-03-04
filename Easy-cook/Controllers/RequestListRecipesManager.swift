@@ -1,10 +1,3 @@
-//
-//  RequestListRecipesManager.swift
-//  Easy-cook
-//
-//  Created by MacBook on 02.03.2023.
-//
-
 import Foundation
 
 protocol RequestListRecipeDelegate{

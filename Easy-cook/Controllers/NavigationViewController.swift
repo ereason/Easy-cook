@@ -1,10 +1,3 @@
-//
-//  NavigationViewController.swift
-//  Easy-cook
-//
-//  Created by Дербе Эмма on 01.03.2023.
-//
-
 import UIKit
 
 // MARK: - viewDidLoad

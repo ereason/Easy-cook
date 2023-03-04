@@ -1,19 +1,6 @@
 import UIKit
 
-class ReciptsListVC: UIViewController, RequestListRecipeDelegate {
-    func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel) {
-    
-        DispatchQueue.main.async {
-            self.reciepts = recipeList.results
-            self.tableView.reloadData()
-        }
-        
-        print(recipeList)
-    }
-    
-    func didFailWithError(error: Error) {
-        print(error)
-    }
+class ReciptsListVC: UIViewController{
     
     var manager = RequestListRecipesManager()
     var tableView = UITableView()
@@ -22,14 +9,13 @@ class ReciptsListVC: UIViewController, RequestListRecipeDelegate {
     struct Cells {
         static let recieptCell = "TableViewPrototypeCell"
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         manager.delegate = self
         // updating data for table view
         manager.fetchRecipe(number: 10, offset: 0)
-    //    reciepts = fetchData()
         configureTableView()
     }
     
@@ -75,4 +61,24 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
         print(reciepts[indexPath.row].id)
         present(RecipeViewController(reciepts[indexPath.row].id), animated: true, completion: nil)
     }
+}
+
+
+// MARK: - Extension (RequestListRecipeDelegate)
+extension ReciptsListVC: RequestListRecipeDelegate{
+    
+    func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel) {
+        
+        DispatchQueue.main.async {
+            self.reciepts = recipeList.results
+            self.tableView.reloadData()
+        }
+        
+        print(recipeList)
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
 }

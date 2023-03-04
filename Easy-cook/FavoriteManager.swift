@@ -1,10 +1,3 @@
-//
-//  UserSettings.swift
-//  Easy cook
-//
-//  Created by Sergey Azimov on 28.02.2023.
-//
-
 import Foundation
 
 struct IdRecipes:Codable {

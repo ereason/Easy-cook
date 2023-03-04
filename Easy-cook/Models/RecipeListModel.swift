@@ -1,8 +1,14 @@
 import UIKit
+
+// MARK: - RecipeListModel
 struct RecipeListModel {
     var results: [ResultModel]
     let offset, number, totalResults: Int
-    
+}
+
+// MARK: RecipeListModel convenience initializers
+
+extension RecipeListModel{
     init(data: Recipes) {
         self.results = []
         
@@ -14,12 +20,18 @@ struct RecipeListModel {
         }
     }
 }
+
+// MARK: - ResultModel
 struct ResultModel {
     let id: Int
     let title: String
     let image: String
     let imageType: String
-    
+}
+
+// MARK: ResultModel convenience initializers
+
+extension ResultModel{
     init(data: Result) {
         self.id = data.id
         self.title = data.title
