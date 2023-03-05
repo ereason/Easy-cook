@@ -68,7 +68,7 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == numbersOfCells - 2 {
             numbersOfCells += 10
             DispatchQueue.main.async {
-                self.manager.fetchRecipe(number: self.numbersOfCells, offset: 0)
+                self.manager.fetchRecipe(query: .list(number: self.numbersOfCells, offset: 0))
                 tableView.reloadData()
             }
         }
