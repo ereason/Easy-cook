@@ -5,17 +5,15 @@ class TableViewPrototypeCell: UITableViewCell {
     
     var recieptImageView = UIImageView()
     var recieptTitleLabel = UILabel()
-    var recieptLikeButton = UIButton()
+    var recieptLikeButton = LikeButton()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(recieptImageView)
         addSubview(recieptTitleLabel)
         contentView.addSubview(recieptLikeButton)
-        
         configurRecieptImageView()
         configurRecieptNameLabel()
-        configureRecieptLikeButton()
         setImageConstraints()
         setTitleLableConstraints()
         setRecieptLikeButtonConstraints()
@@ -24,11 +22,6 @@ class TableViewPrototypeCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // Like Button Defenition
-    @objc func recieptLikeButtonPressed(sender: UIButton!) {
-            print("______________----------_____________------------______________--------")
-       }
     
     func set(recieptList: ResultModel) {
         recieptImageView.kf.setImage(with: URL(string: recieptList.image))
@@ -45,13 +38,6 @@ class TableViewPrototypeCell: UITableViewCell {
         recieptTitleLabel.numberOfLines = 1
         recieptTitleLabel.adjustsFontSizeToFitWidth = false
     }
-    
-    func configureRecieptLikeButton() {
-        recieptLikeButton.setImage(UIImage(systemName: K.systemHeartImage), for: .normal)
-        recieptLikeButton.setAttributedTitle(nil, for: .normal)
-        recieptLikeButton.addTarget(self, action: #selector(recieptLikeButtonPressed), for: .touchUpInside)
-    }
-    
     func setImageConstraints() {
         recieptImageView.translatesAutoresizingMaskIntoConstraints = false
         recieptImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
