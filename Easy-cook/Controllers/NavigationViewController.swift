@@ -21,8 +21,8 @@ extension NavigationViewController {
 // MARK: - setupNavigationController
 extension NavigationViewController {
     private func setupNavigationController() {
-        UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().tintColor = .systemPink
+        UITabBar.appearance().barTintColor = UIColor.backgroundColor
+        UITabBar.appearance().tintColor = UIColor.redAccent
 
 
         let homeVC = generateNavigationViewController(vc: ReciptsListVC(), image: UIImage(named: K.mainImage)!)

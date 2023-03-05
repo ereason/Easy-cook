@@ -6,8 +6,8 @@ class WelcomeViewController: UIViewController {
     
     private  let getStartedButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .red
-        button.titleLabel?.textColor = .white
+        button.backgroundColor = .redAccent
+        button.titleLabel?.textColor = .whiteAccent
         button.titleLabel?.font = .poppinsBold16()
         button.setTitle("Get started", for: .normal)
         button.setTitleColor(.white, for: .normal)

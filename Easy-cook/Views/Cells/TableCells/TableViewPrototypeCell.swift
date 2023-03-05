@@ -27,6 +27,7 @@ class TableViewPrototypeCell: UITableViewCell {
         recieptImageView.kf.setImage(with: URL(string: recieptList.image))
         //recieptImageView.image =
         recieptTitleLabel.text = recieptList.title
+        recieptTitleLabel.textColor = .textAccent
     }
     
     func configurRecieptImageView() {

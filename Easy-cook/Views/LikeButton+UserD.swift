@@ -17,6 +17,7 @@ class LikeButton:UIButton {
     
     init() {
         super.init(frame: .zero)
+        tintColor = .redAccent
         addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
       //  updateApperance()
     }

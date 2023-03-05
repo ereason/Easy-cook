@@ -31,6 +31,7 @@ class RecipeViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.poppinsBold35()
+        label.textColor = .textAccent
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
         return label
@@ -47,6 +48,7 @@ class RecipeViewController: UIViewController {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .textAccent
         label.font = UIFont.poppinsBold16()
         return label
     }()
@@ -56,6 +58,7 @@ class RecipeViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
+        label.textColor = .textAccent
         label.font = UIFont.poppinsBold16()
         return label
     }()
@@ -65,12 +68,14 @@ class RecipeViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
+        label.textColor = .textAccent
         label.font = UIFont.poppinsBold16()
         return label
     }()
     
     // buttonArray (TODO list)
     var buttonArray = [UIButton]()
+
     
     // recipe field label
     let recipeLabel: UILabel = {
@@ -78,6 +83,7 @@ class RecipeViewController: UIViewController {
         label.text = "Direction"
         label.numberOfLines = 0
         label.textAlignment = .left
+        label.textColor = .textAccent
         label.font = UIFont.poppinsRegular16()
         return label
     }()
@@ -101,7 +107,7 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         likesButton.updateApperance()
         indicatorViewWork()
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         requestManager.delegate = self
         requestManager.fetchRecipe(id)
     }
@@ -133,8 +139,9 @@ extension RecipeViewController {
         for button in buttonArray {
             button.layer.cornerRadius = 10
             button.titleEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 0)
-            button.setTitleColor(.black, for: .normal)
+            button.setTitleColor(.textAccent, for: .normal)
             button.titleLabel?.font = UIFont.poppinsRegular16()
+            button.titleLabel?.textColor = .textAccent
             button.titleLabel?.numberOfLines = 0
             button.contentHorizontalAlignment = .left
             button.contentVerticalAlignment = .center
@@ -230,7 +237,6 @@ extension RecipeViewController: RequestManagerDelegate {
             recipeString.setAttributes([NSAttributedString.Key.font: UIFont.poppinsBold18()!],
                                        range: NSMakeRange(0, 9))
             self.recipeLabel.attributedText = recipeString
-            
             self.setupViews()
             
             self.activityIndicatorView.stopAnimating()

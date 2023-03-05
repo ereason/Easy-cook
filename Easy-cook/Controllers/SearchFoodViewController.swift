@@ -25,14 +25,13 @@ class SearchFoodViewController: UIViewController {
         label.font = .poppinsBold40()
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.textColor = .black
+        label.textColor = .textAccent
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupView()
         setupConstraints()
     }
@@ -40,6 +39,7 @@ class SearchFoodViewController: UIViewController {
 
 extension SearchFoodViewController {
     func setupView() {
+        view.backgroundColor = .backgroundColor
         view.addSubview(titleLabel)
         view.addSubview(searchBar)
         view.addSubview(recipeCategoryCollectionView)
