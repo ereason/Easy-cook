@@ -103,9 +103,6 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         indicatorViewWork()
         view.backgroundColor = .white
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.setupViews()
-        }
         requestManager.delegate = self
         requestManager.fetchRecipe(id)
     }
@@ -119,33 +116,33 @@ extension RecipeViewController {
     func indicatorViewWork() {
         view.addSubview(activityIndicatorView)
         activityIndicatorView.center = view.center
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.activityIndicatorView.stopAnimating()
-        }
     }
     
     func setupViews() { // masks and adding on view
-
         // time, servings and likes label
         let infoStackView = UIStackView(arrangedSubviews: [timeLabel, servingLabel, likesLabel])
         infoStackView.axis = .horizontal
         infoStackView.alignment = .fill
         infoStackView.distribution = .equalCentering
-        infoStackView.spacing = 10
         
-        // ingredients array
+        // ingredients stck
         let toDoButtonStackView = UIStackView(arrangedSubviews: buttonArray)
-//            toDoButtonStackView.addArrangedSubview(button)
-            toDoButtonStackView.axis = .vertical
-            toDoButtonStackView.distribution = .fillEqually
-            toDoButtonStackView.alignment = .fill
-  
+        toDoButtonStackView.axis = .vertical
+        toDoButtonStackView.distribution = .equalSpacing
+        toDoButtonStackView.spacing = 8
+        
         for button in buttonArray {
             button.layer.cornerRadius = 10
-            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+            button.titleEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 0)
             button.setTitleColor(.black, for: .normal)
             button.titleLabel?.font = UIFont.poppinsRegular16()
+            button.titleLabel?.numberOfLines = 0
             button.contentHorizontalAlignment = .left
+            button.contentVerticalAlignment = .center
+            button.backgroundColor = .clear
+            button.showsTouchWhenHighlighted = false
+            button.adjustsImageWhenHighlighted = false
+            
         }
         
         for i in [scrollView, likesButton, titleLabel, imageView, infoStackView, toDoButtonStackView, recipeLabel] {
@@ -182,7 +179,7 @@ extension RecipeViewController {
             toDoButtonStackView.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 34),
             toDoButtonStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             toDoButtonStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
-
+            
             recipeLabel.topAnchor.constraint(equalTo: toDoButtonStackView.bottomAnchor, constant: 34),
             recipeLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             recipeLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
@@ -201,13 +198,13 @@ extension RecipeViewController {
 extension RecipeViewController: RequestManagerDelegate {
     
     func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel) {
-
+        
         DispatchQueue.main.async {
             
             self.titleLabel.text = recipe.title // title
             
             self.imageView.kf.setImage(with: URL(string: recipe.imageURL))
-                 
+            
             // info labels
             self.timeLabel.text = "\(recipe.minutes) \nminutes"
             self.servingLabel.text = "\(recipe.servings) \nservings"
@@ -220,14 +217,7 @@ extension RecipeViewController: RequestManagerDelegate {
                 button.addTarget(self, action: #selector(self.buttonTouched(_:)), for: .touchUpInside)
                 button.setTitle(originalIngridients, for: .normal)
                 self.buttonArray.append(button)
-                
-//            self.ingredientsLabel.text! += "\n\(originalIngridients)"
             }
-//
-//            let ingredientString = NSMutableAttributedString(string: self.ingredientsLabel.text!)
-//            ingredientString.setAttributes([NSAttributedString.Key.font: UIFont.poppinsBold18()!],
-//                                           range: NSMakeRange(0, 11))
-//            self.ingredientsLabel.attributedText = ingredientString
             
             // recipe label
             var recipeText = recipe.steps.isEmpty ? "\(recipe.sourceURL)" : "\(recipe.steps)"
@@ -239,8 +229,12 @@ extension RecipeViewController: RequestManagerDelegate {
             
             let recipeString = NSMutableAttributedString(string: self.recipeLabel.text!)
             recipeString.setAttributes([NSAttributedString.Key.font: UIFont.poppinsBold18()!],
-                                           range: NSMakeRange(0, 9))
+                                       range: NSMakeRange(0, 9))
             self.recipeLabel.attributedText = recipeString
+            
+            self.setupViews()
+            
+            self.activityIndicatorView.stopAnimating()
             
             print(recipe)
         }
@@ -251,13 +245,12 @@ extension RecipeViewController: RequestManagerDelegate {
     }
     
     @objc func buttonTouched(_ sender: UIButton) {
-        sender.isSelected = sender.isSelected ? false : true
-       
-        if sender.isSelected {
-            sender.backgroundColor = .systemBlue
+        var title = sender.currentTitle ?? " "
+        if title.last == "✔" {
+            title.removeLast()
         } else {
-            sender.backgroundColor = .clear
+            title += " " + "✔"
         }
+        sender.setTitle(title, for: .normal)
     }
 }
-
