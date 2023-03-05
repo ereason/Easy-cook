@@ -7,7 +7,7 @@
 
 import Foundation
 struct K {
-    static let api_Key = "2d09cc3ef41d4e8d88d9743a55c7cdbb"
+    static let api_Key = ""
     static let idFavorite = "idFavorite"
     static let JSONDecoding = "JSONDecoding"
     static let mainViewBackgroundImage = "BackgroundWV"

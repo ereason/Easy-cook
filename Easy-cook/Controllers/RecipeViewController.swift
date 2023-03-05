@@ -20,12 +20,10 @@ class RecipeViewController: UIViewController {
     }()
     
     // like button
-    var likesButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setBackgroundImage(UIImage(systemName: K.systemHeartImage), for: .normal)
-        button.tintColor = .red
-        button.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
-        return button
+    var likesButton: LikeButton = {
+     
+        return LikeButton()
+      
     }()
     
     // title recipe's label
@@ -88,7 +86,7 @@ class RecipeViewController: UIViewController {
     
     init(_ id: Int) {
         self.id = id
-      
+        likesButton.setID(id: id)
         super.init(nibName: nil, bundle: nil)
        }
     
@@ -101,6 +99,7 @@ class RecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        likesButton.updateApperance()
         indicatorViewWork()
         view.backgroundColor = .white
         requestManager.delegate = self

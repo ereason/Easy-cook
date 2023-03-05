@@ -5,6 +5,7 @@ class ReciptsListVC: UIViewController{
     var tableView = UITableView()
     var reciepts: [ResultModel] = []
     var numbersOfCells = 20
+   
     struct Cells {
         static let recieptCell = "TableViewPrototypeCell"
     }
@@ -53,7 +54,8 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.recieptCell) as! TableViewPrototypeCell
         let recieptsList = reciepts[indexPath.row]
         cell.set(recieptList: recieptsList)
-        cell.recieptLikeButton.itemId = reciepts[indexPath.row].id
+        
+        cell.recieptLikeButton.setID(id: reciepts[indexPath.row].id)
         cell.recieptLikeButton.updateApperance()
         return cell
     }
