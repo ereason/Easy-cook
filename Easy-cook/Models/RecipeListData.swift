@@ -13,3 +13,4 @@ struct Result: Codable {
     let image: String
     let imageType: String
 }
+

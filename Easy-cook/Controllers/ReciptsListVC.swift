@@ -14,7 +14,7 @@ class ReciptsListVC: UIViewController{
         view.backgroundColor = .white
         manager.delegate = self
         // updating data for table view
-        manager.fetchRecipe(number: numbersOfCells, offset: 0)
+        manager.fetchRecipe(query: .list(number: numbersOfCells, offset: 0))
         configureTableView()
     }
     
