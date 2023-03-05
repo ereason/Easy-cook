@@ -7,16 +7,27 @@ protocol RequestListRecipeDelegate{
 
 struct RequestListRecipesManager{
     var delegate: RequestListRecipeDelegate?
-    
-    let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
-    func getURL(number: Int, offset: Int)->String{
-        return "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularity&offset=\(offset)&apiKey=\(apiKey)"
-        //return "https://api.spoonacular.com/recipes/\(recipeId)/information?apiKey=\(apiKey)&includeNutrition=true"
-        //https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularit&offset=\(offset)&apiKey=\(apiKey)
+    enum TypeQueryRecipes {
+        case list(number: Int, offset: Int)
+        case search(query: String, number: Int, offset: Int)
+        case category(cat: String)
     }
     
-    func fetchRecipe(number: Int, offset: Int) {
-        performRequest(with: getURL(number: number, offset: offset))
+    let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
+    func getURL(typeQuery: TypeQueryRecipes)->String{
+        switch typeQuery {
+        case .list(let number, let offset):
+            return       "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularit&offset=\(offset)&apiKey=\(apiKey)"
+        case .search(let query, let number, let offset):
+            return "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&offset=\(offset)&apiKey=\(apiKey)&query=\(query)"
+        default:        //case .category(let cat):
+            return ""
+        }
+    }
+    
+    //func fetchRecipe(number: Int, offset: Int, query: String)
+    func fetchRecipe(query: TypeQueryRecipes) {
+        performRequest(with: getURL(typeQuery: query))
     }
     
     func performRequest(with urlString: String) {
@@ -36,7 +47,6 @@ struct RequestListRecipesManager{
             task.resume()
         }
     }
-    
     
     func parseJSON(_ recipeListData: Data) -> RecipeListModel?{
         let decoder = JSONDecoder()
