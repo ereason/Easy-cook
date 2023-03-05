@@ -111,8 +111,6 @@ class RecipeViewController: UIViewController {
     }
     
     @objc func likeButtonPressed() {
-        print("like")
-        likesButton.setBackgroundImage(UIImage(systemName: K.systemFillHeartImage), for: .normal)
     }
 }
 

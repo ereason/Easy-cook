@@ -10,7 +10,7 @@
 		562944DA29AE1B16005D9EC3 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562944D929AE1B16005D9EC3 /* UIFont+Extensions.swift */; };
 		5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */; };
 		5658AB4729ACD684004F8CFB /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4629ACD684004F8CFB /* WelcomeView.swift */; };
-		56E1CEEE29AE89B2008BBB6E /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1CEED29AE89B2008BBB6E /* FavoriteManager.swift */; };
+		56BFE87329B485900042C796 /* LikeButton+UserD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BFE87229B485900042C796 /* LikeButton+UserD.swift */; };
 		574A398E29AD045C00C00F54 /* ReciptsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A398D29AD045C00C00F54 /* ReciptsListVC.swift */; };
 		574A399329AD0CA400C00F54 /* TableViewPrototypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A399229AD0CA300C00F54 /* TableViewPrototypeCell.swift */; };
 		57A53E9D29AD1E2600B0C6C4 /* RecipeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A53E9C29AD1E2600B0C6C4 /* RecipeListModel.swift */; };
@@ -45,7 +45,7 @@
 		562944D929AE1B16005D9EC3 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		5658AB4629ACD684004F8CFB /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		56E1CEED29AE89B2008BBB6E /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
+		56BFE87229B485900042C796 /* LikeButton+UserD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeButton+UserD.swift"; sourceTree = "<group>"; };
 		574A398D29AD045C00C00F54 /* ReciptsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptsListVC.swift; sourceTree = "<group>"; };
 		574A399229AD0CA300C00F54 /* TableViewPrototypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPrototypeCell.swift; sourceTree = "<group>"; };
 		57981E9A29AE21C700176BF1 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
@@ -103,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				5E21220529AE449B00584799 /* Secrets.swift */,
-				56E1CEED29AE89B2008BBB6E /* FavoriteManager.swift */,
 				5E21220129AE3AF700584799 /* RecipeModel.swift */,
 				5E2121FF29AE3AC400584799 /* RecipeData.swift */,
 				5E2121FD29AE3A3200584799 /* RequestManager.swift */,
@@ -183,6 +182,7 @@
 				5658AB4629ACD684004F8CFB /* WelcomeView.swift */,
 				C5AB697D29B3534E008EDF4A /* CategoryCollectionView.swift */,
 				C5AB697729B352C0008EDF4A /* RecipeCategoryCollectionView.swift */,
+				56BFE87229B485900042C796 /* LikeButton+UserD.swift */,
 				57A53E9F29AD42CB00B0C6C4 /* Cells */,
 			);
 			path = Views;
@@ -308,9 +308,9 @@
 				562944DA29AE1B16005D9EC3 /* UIFont+Extensions.swift in Sources */,
 				5658AB4729ACD684004F8CFB /* WelcomeView.swift in Sources */,
 				574A399329AD0CA400C00F54 /* TableViewPrototypeCell.swift in Sources */,
-				56E1CEEE29AE89B2008BBB6E /* FavoriteManager.swift in Sources */,
 				5EAA6C6429AB279B009A8E10 /* RecipeViewController.swift in Sources */,
 				C5AB698229B353AA008EDF4A /* CellsConstants.swift in Sources */,
+				56BFE87329B485900042C796 /* LikeButton+UserD.swift in Sources */,
 				5E21220629AE449B00584799 /* Secrets.swift in Sources */,
 				5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */,
 				5EAA6C6429AB279B009A8E10 /* RecipeViewController.swift in Sources */,

@@ -1,12 +1,10 @@
 import UIKit
 
 class ReciptsListVC: UIViewController{
-    
     var manager = RequestListRecipesManager()
     var tableView = UITableView()
     var reciepts: [ResultModel] = []
     var numbersOfCells = 20
-    
     struct Cells {
         static let recieptCell = "TableViewPrototypeCell"
     }
@@ -55,15 +53,16 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cells.recieptCell) as! TableViewPrototypeCell
         let recieptsList = reciepts[indexPath.row]
         cell.set(recieptList: recieptsList)
+        cell.recieptLikeButton.itemId = reciepts[indexPath.row].id
+        cell.recieptLikeButton.updateApperance()
         return cell
     }
     // this method will run when the user click at row (so we will open segue)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         print(reciepts[indexPath.row].id)
         present(RecipeViewController(reciepts[indexPath.row].id), animated: true, completion: nil)
     }
-   
     //Updating amount of shoings cells it TableView
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == numbersOfCells - 2 {

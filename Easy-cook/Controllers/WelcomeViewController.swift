@@ -3,7 +3,6 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     private let welcomeView = WelcomeView()
-    private let userSettings = FavoriteManager()
     
     private  let getStartedButton: UIButton = {
         let button = UIButton(type: .system)
