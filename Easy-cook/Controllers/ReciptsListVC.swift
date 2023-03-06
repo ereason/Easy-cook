@@ -4,8 +4,10 @@ class ReciptsListVC: UIViewController{
     var manager = RequestListRecipesManager()
     var tableView = UITableView()
     var reciepts: [ResultModel] = []
-    var numbersOfCells = 20
-   
+    var loadNum = 20
+    var offset = 0
+    var isEnabled = true
+    
     struct Cells {
         static let recieptCell = "TableViewPrototypeCell"
     }
@@ -15,7 +17,7 @@ class ReciptsListVC: UIViewController{
         view.backgroundColor = .backgroundColor
         manager.delegate = self
         // updating data for table view
-        manager.fetchRecipe(query: .list(number: numbersOfCells, offset: 0))
+        manager.fetchRecipe(query: .list(number: loadNum, offset: offset))
         configureTableView()
         // Register the custom header view.
            tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: K.sectiontHeaderIndent)
@@ -85,11 +87,17 @@ extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
     }
     //Updating amount of shoings cells it TableView
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == numbersOfCells - 2 {
-            numbersOfCells += 10
-            DispatchQueue.main.async {
-                self.manager.fetchRecipe(query: .list(number: self.numbersOfCells, offset: 0))
-                tableView.reloadData()
+        if indexPath.row == reciepts.count - 3 {
+           
+            if isEnabled{
+                isEnabled = false
+                offset += loadNum
+                DispatchQueue.main.async {
+                    print("   rffrfrf   \(self.offset)")
+                    self.manager.fetchRecipe(query: .list(number: self.loadNum, offset: self.offset))
+                    tableView.reloadData()
+                }
+                
             }
         }
     }
@@ -102,11 +110,15 @@ extension ReciptsListVC: RequestListRecipeDelegate{
     func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel) {
         
         DispatchQueue.main.async {
-            self.reciepts = recipeList.results
+            
+            recipeList.results.forEach({
+                self.reciepts.append($0)
+            })
             self.tableView.reloadData()
         }
         
-        print(recipeList)
+        isEnabled = true
+        print( self.reciepts.count)
     }
     
     func didFailWithError(error: Error) {
