@@ -19,4 +19,5 @@ struct K {
     static let mainImage = "main"
     static let favoriteImage = "favorite"
     static let searchImage = "search"
+    static let sectiontHeaderIndent = "sectionHeader"
 }
