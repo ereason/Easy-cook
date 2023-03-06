@@ -141,9 +141,10 @@ extension RecipeViewController {
         for button in buttonArray {
             button.layer.cornerRadius = 10
             button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 30)
+            //            button.getShadow(button)
             button.backgroundColor = .clear
             button.setTitleColor(.textAccent, for: .normal)
-//            button.sizeToFit()
+            button.sizeToFit()
             button.titleLabel?.font = UIFont.poppinsRegular16()
             button.titleLabel?.textColor = .textAccent
             button.titleLabel?.numberOfLines = 0
@@ -271,7 +272,7 @@ extension RecipeViewController: RequestManagerDelegate {
         let imageView = UIImageView(image: UIImage(named: "checkmark"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        if sender.subviews.count == 2 {
+        if sender.subviews.count == subviewsCount {
             sender.subviews.last?.removeFromSuperview()
         } else {
             //            sender.addSubview(checkmarkLabel)
@@ -287,4 +288,6 @@ extension RecipeViewController: RequestManagerDelegate {
             ])
         }
     }
+    
+    
 }
