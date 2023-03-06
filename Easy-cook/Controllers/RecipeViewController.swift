@@ -1,6 +1,5 @@
 import UIKit
 import Kingfisher
-
 class RecipeViewController: UIViewController {
   
     var requestManager = RequestManager()
@@ -75,7 +74,17 @@ class RecipeViewController: UIViewController {
     
     // buttonArray (TODO list)
     var buttonArray = [UIButton]()
-
+    
+    // checkmark label
+    
+    let checkmarkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "✔️"
+        label.font = UIFont.poppinsBold12()
+        label.translatesAutoresizingMaskIntoConstraints = false
+//        sender.addSubview(label)
+        return label
+    }()
     
     // recipe field label
     let recipeLabel: UILabel = {
@@ -123,6 +132,7 @@ extension RecipeViewController {
         activityIndicatorView.center = view.center
     }
     
+    
     func setupViews() { // masks and adding on view
         // time, servings and likes label
         let infoStackView = UIStackView(arrangedSubviews: [timeLabel, servingLabel, likesLabel])
@@ -130,26 +140,26 @@ extension RecipeViewController {
         infoStackView.alignment = .fill
         infoStackView.distribution = .equalCentering
         
-        // ingredients stck
-        let toDoButtonStackView = UIStackView(arrangedSubviews: buttonArray)
-        toDoButtonStackView.axis = .vertical
-        toDoButtonStackView.distribution = .equalSpacing
-        toDoButtonStackView.spacing = 8
         
         for button in buttonArray {
             button.layer.cornerRadius = 10
-            button.titleEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 0)
+            button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 30)
+            button.getShadow(button)
             button.setTitleColor(.textAccent, for: .normal)
+            button.sizeToFit()
             button.titleLabel?.font = UIFont.poppinsRegular16()
             button.titleLabel?.textColor = .textAccent
             button.titleLabel?.numberOfLines = 0
             button.contentHorizontalAlignment = .left
-            button.contentVerticalAlignment = .center
             button.backgroundColor = .clear
-            button.showsTouchWhenHighlighted = false
-            button.adjustsImageWhenHighlighted = false
-            
         }
+        
+        // ingredients stck
+        let toDoButtonStackView = UIStackView(arrangedSubviews: buttonArray)
+        toDoButtonStackView.axis = .vertical
+        toDoButtonStackView.alignment = .fill
+        toDoButtonStackView.distribution = .fillEqually
+        toDoButtonStackView.spacing = 15
         
         for i in [scrollView, likesButton, titleLabel, imageView, infoStackView, toDoButtonStackView, recipeLabel] {
             i.translatesAutoresizingMaskIntoConstraints = false
@@ -219,6 +229,7 @@ extension RecipeViewController: RequestManagerDelegate {
             // ingredients button
             for i in 0...recipe.ingredients.count - 1 {
                 let originalIngridients = recipe.ingredients[i].original
+//                let button = UIButton(type: .system)
                 let button = UIButton(type: .system)
                 button.addTarget(self, action: #selector(self.buttonTouched(_:)), for: .touchUpInside)
                 button.setTitle(originalIngridients, for: .normal)
@@ -250,12 +261,32 @@ extension RecipeViewController: RequestManagerDelegate {
     }
     
     @objc func buttonTouched(_ sender: UIButton) {
-        var title = sender.currentTitle ?? " "
-        if title.last == "✔" {
-            title.removeLast()
+        
+        let color = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+
+        sender.titleEdgeInsets = UIEdgeInsets(top: 10,
+                                              left: 10,
+                                              bottom: 10,
+                                              right: 30
+        )
+        sender.backgroundColor = sender.backgroundColor == .clear ? color : .clear
+        
+        if sender.backgroundColor == color {
+            
+            sender.addSubview(checkmarkLabel)
+            
+            NSLayoutConstraint.activate([
+                checkmarkLabel.centerYAnchor.constraint(equalTo: sender.centerYAnchor),
+                checkmarkLabel.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -10),
+                checkmarkLabel.heightAnchor.constraint(equalToConstant: 14),
+                checkmarkLabel.widthAnchor.constraint(equalToConstant: 14)
+            ])
+            
         } else {
-            title += " " + "✔"
+            
+            checkmarkLabel.removeFromSuperview()
         }
-        sender.setTitle(title, for: .normal)
+        
+        print(sender.state)
     }
 }
