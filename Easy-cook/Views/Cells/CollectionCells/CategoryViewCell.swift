@@ -13,7 +13,7 @@ class CategoryViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
-        image.backgroundColor = .red
+        image.backgroundColor = .redAccent
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -21,7 +21,7 @@ class CategoryViewCell: UICollectionViewCell {
     let recipeLabel: UILabel = {
         let label = UILabel()
         label.font = .poppinsBold12()
-        label.textColor = .white
+        label.textColor = .whiteAccent
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +44,7 @@ class CategoryViewCell: UICollectionViewCell {
 // MARK: - setupCell
 extension CategoryViewCell {
     func setupCell() {
+        backgroundColor = .backgroundColor
         addSubview(backgroundImage)
         backgroundImage.addSubview(recipeLabel)
 

@@ -10,8 +10,6 @@ import UIKit
 
 class RecipeCategoryViewCell: UICollectionViewCell {
 
-
-
     let mainImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -23,7 +21,7 @@ class RecipeCategoryViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.layer.cornerRadius = 24
         image.clipsToBounds = true
-        image.backgroundColor = .lightGray
+        image.backgroundColor = .systemGray
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -31,7 +29,7 @@ class RecipeCategoryViewCell: UICollectionViewCell {
     let recipeLabel: UILabel = {
         let label = UILabel()
         label.font = .poppinsBold14()
-        label.textColor = .black
+        label.textColor = .whiteAccent
         label.textAlignment = .center
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,6 +52,7 @@ class RecipeCategoryViewCell: UICollectionViewCell {
 //MARK: - setupCellConstraints
 extension RecipeCategoryViewCell {
     func setupCell() {
+        backgroundColor = .backgroundColor
         addSubview(backgroundImage)
         backgroundImage.addSubview(mainImage)
         backgroundImage.addSubview(recipeLabel)

@@ -24,6 +24,7 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
         layout.minimumLineSpacing = 16
         contentInset = UIEdgeInsets(top: 0, left: CellsConstants.leftDestination, bottom: 0, right: CellsConstants.rightDestination)
 
+        backgroundColor = .backgroundColor
         delegate = self
         dataSource = self
         register(RecipeCategoryViewCell.self, forCellWithReuseIdentifier: K.reuseIdRecipwCategoryVC)

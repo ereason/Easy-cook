@@ -12,7 +12,7 @@ class ReciptsListVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         manager.delegate = self
         // updating data for table view
         manager.fetchRecipe(query: .list(number: numbersOfCells, offset: 0))

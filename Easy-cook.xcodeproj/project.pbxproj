@@ -37,6 +37,7 @@
 		C5AB698029B35377008EDF4A /* RecieptListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB697F29B35377008EDF4A /* RecieptListModel.swift */; };
 		C5AB698229B353AA008EDF4A /* CellsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB698129B353AA008EDF4A /* CellsConstants.swift */; };
 		C5AB698429B353F4008EDF4A /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB698329B353F4008EDF4A /* SearchFoodViewController.swift */; };
+		C5AB698629B51519008EDF4A /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB698529B51519008EDF4A /* UIColor + Extensions.swift */; };
 		FA9B9E6B29B0E49B0047A85D /* RecipeListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B9E6A29B0E49B0047A85D /* RecipeListData.swift */; };
 		FA9B9E6D29B0EA420047A85D /* RequestListRecipesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B9E6C29B0EA420047A85D /* RequestListRecipesManager.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		C5AB697F29B35377008EDF4A /* RecieptListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecieptListModel.swift; sourceTree = "<group>"; };
 		C5AB698129B353AA008EDF4A /* CellsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsConstants.swift; sourceTree = "<group>"; };
 		C5AB698329B353F4008EDF4A /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
+		C5AB698529B51519008EDF4A /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		FA9B9E6A29B0E49B0047A85D /* RecipeListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListData.swift; sourceTree = "<group>"; };
 		FA9B9E6C29B0EA420047A85D /* RequestListRecipesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestListRecipesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				57981E9A29AE21C700176BF1 /* UITableView+Ext.swift */,
 				562944D929AE1B16005D9EC3 /* UIFont+Extensions.swift */,
 				9BBA560629B3309700EFEA18 /* UIImageView+Ext.swift */,
+				C5AB698529B51519008EDF4A /* UIColor + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -102,6 +105,7 @@
 		57A53E9B29AD1DFF00B0C6C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA9B9E6C29B0EA420047A85D /* RequestListRecipesManager.swift */,
 				5E21220529AE449B00584799 /* Secrets.swift */,
 				5E21220129AE3AF700584799 /* RecipeModel.swift */,
 				5E2121FF29AE3AC400584799 /* RecipeData.swift */,
@@ -109,7 +113,6 @@
 				57A53E9C29AD1E2600B0C6C4 /* RecipeListModel.swift */,
 				FA9B9E6A29B0E49B0047A85D /* RecipeListData.swift */,
 				C5AB697F29B35377008EDF4A /* RecieptListModel.swift */,
-				C5AB698129B353AA008EDF4A /* CellsConstants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,7 +124,6 @@
 				C5AB696429AFA169008EDF4A /* NavigationViewController.swift */,
 				5EAA6C6329AB279B009A8E10 /* RecipeViewController.swift */,
 				574A398D29AD045C00C00F54 /* ReciptsListVC.swift */,
-				FA9B9E6C29B0EA420047A85D /* RequestListRecipesManager.swift */,
 				C5AB698329B353F4008EDF4A /* SearchFoodViewController.swift */,
 			);
 			path = Controllers;
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				57C4660129B3D27E00A6029F /* K.swift */,
+				C5AB698129B353AA008EDF4A /* CellsConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5AB697E29B3534E008EDF4A /* CategoryCollectionView.swift in Sources */,
+				C5AB698629B51519008EDF4A /* UIColor + Extensions.swift in Sources */,
 				57C4660229B3D27E00A6029F /* K.swift in Sources */,
 				C5AB697C29B35326008EDF4A /* CategoryViewCell.swift in Sources */,
 				562944DA29AE1B16005D9EC3 /* UIFont+Extensions.swift in Sources */,
@@ -473,8 +477,9 @@
 				INFOPLIST_FILE = "Easy-cook/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,9 +488,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "co.IvanBiriukov.Easy-cook";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -501,8 +509,9 @@
 				INFOPLIST_FILE = "Easy-cook/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,9 +520,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "co.IvanBiriukov.Easy-cook";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
