@@ -1,9 +1,10 @@
 import UIKit
 import Kingfisher
-
 class RecipeViewController: UIViewController {
-  
+    
     var requestManager = RequestManager()
+    
+    var subviewsCount = Int()
     
     var activityIndicatorView: UIActivityIndicatorView = { //indicator
         let indicator = UIActivityIndicatorView(style: .large)
@@ -15,15 +16,12 @@ class RecipeViewController: UIViewController {
     let scrollView: UIScrollView = { // scrolling View
         let scrollView = UIScrollView(frame: .zero)
         scrollView.showsVerticalScrollIndicator = false
-
         return scrollView
     }()
     
     // like button
     var likesButton: LikeButton = {
-     
         return LikeButton()
-      
     }()
     
     // title recipe's label
@@ -41,7 +39,7 @@ class RecipeViewController: UIViewController {
         let image = UIImageView()
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
-       return image
+        return image
     }()
     
     // cooking time label
@@ -52,7 +50,7 @@ class RecipeViewController: UIViewController {
         label.font = UIFont.poppinsBold16()
         return label
     }()
-
+    
     // serving label (portions amount)
     var servingLabel: UILabel = {
         let label = UILabel()
@@ -75,7 +73,16 @@ class RecipeViewController: UIViewController {
     
     // buttonArray (TODO list)
     var buttonArray = [UIButton]()
-
+    
+    // checkmark label
+    
+    //    let checkmarkLabel: UILabel = {
+    //        let label = UILabel()
+    //        label.text = "✔️"
+    //        label.font = UIFont.poppinsBold12()
+    //        label.translatesAutoresizingMaskIntoConstraints = false
+    //        return label
+    //    }()
     
     // recipe field label
     let recipeLabel: UILabel = {
@@ -94,15 +101,15 @@ class RecipeViewController: UIViewController {
         self.id = id
         likesButton.setID(id: id)
         super.init(nibName: nil, bundle: nil)
-       }
+    }
     
     required init?(coder aDecoder: NSCoder) {
-
+        
         self.id = 10000
-    
+        
         super.init(coder: aDecoder)
-      }
-
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         likesButton.updateApperance()
@@ -130,26 +137,27 @@ extension RecipeViewController {
         infoStackView.alignment = .fill
         infoStackView.distribution = .equalCentering
         
-        // ingredients stck
-        let toDoButtonStackView = UIStackView(arrangedSubviews: buttonArray)
-        toDoButtonStackView.axis = .vertical
-        toDoButtonStackView.distribution = .equalSpacing
-        toDoButtonStackView.spacing = 8
         
         for button in buttonArray {
             button.layer.cornerRadius = 10
-            button.titleEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 0)
+            button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 30)
+            //            button.getShadow(button)
+            button.backgroundColor = .clear
             button.setTitleColor(.textAccent, for: .normal)
+//            button.sizeToFit()
             button.titleLabel?.font = UIFont.poppinsRegular16()
             button.titleLabel?.textColor = .textAccent
             button.titleLabel?.numberOfLines = 0
             button.contentHorizontalAlignment = .left
-            button.contentVerticalAlignment = .center
             button.backgroundColor = .clear
-            button.showsTouchWhenHighlighted = false
-            button.adjustsImageWhenHighlighted = false
-            
         }
+        
+        // ingredients stck
+        let toDoButtonStackView = UIStackView(arrangedSubviews: buttonArray)
+        toDoButtonStackView.axis = .vertical
+        toDoButtonStackView.alignment = .fill
+        toDoButtonStackView.distribution = .fillEqually
+        toDoButtonStackView.spacing = 20
         
         for i in [scrollView, likesButton, titleLabel, imageView, infoStackView, toDoButtonStackView, recipeLabel] {
             i.translatesAutoresizingMaskIntoConstraints = false
@@ -219,6 +227,7 @@ extension RecipeViewController: RequestManagerDelegate {
             // ingredients button
             for i in 0...recipe.ingredients.count - 1 {
                 let originalIngridients = recipe.ingredients[i].original
+                //                let button = UIButton(type: .system)
                 let button = UIButton(type: .system)
                 button.addTarget(self, action: #selector(self.buttonTouched(_:)), for: .touchUpInside)
                 button.setTitle(originalIngridients, for: .normal)
@@ -250,12 +259,35 @@ extension RecipeViewController: RequestManagerDelegate {
     }
     
     @objc func buttonTouched(_ sender: UIButton) {
-        var title = sender.currentTitle ?? " "
-        if title.last == "✔" {
-            title.removeLast()
+//        let checkmarkLabel: UILabel = {
+//            let label = UILabel()
+//            label.text = "√"
+//            label.tintColor = .red
+//            label.textColor = .red
+//            label.font = UIFont.poppinsBold16()
+//            label.translatesAutoresizingMaskIntoConstraints = false
+//            return label
+//        }()
+        
+        let imageView = UIImageView(image: UIImage(named: "checkmark"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        if sender.subviews.count == subviewsCount {
+            sender.subviews.last?.removeFromSuperview()
         } else {
-            title += " " + "✔"
+            //            sender.addSubview(checkmarkLabel)
+            sender.addSubview(imageView)
+            subviewsCount = sender.subviews.count
+//            print(subviewsCount)
+    
+            NSLayoutConstraint.activate([
+                imageView.centerYAnchor.constraint(equalTo: sender.centerYAnchor),
+                imageView.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -10),
+                imageView.heightAnchor.constraint(equalToConstant: 16),
+                imageView.widthAnchor.constraint(equalToConstant: 16)
+            ])
         }
-        sender.setTitle(title, for: .normal)
     }
+    
+    
 }
