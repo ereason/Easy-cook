@@ -17,7 +17,7 @@ struct RequestListRecipesManager{
     func getURL(typeQuery: TypeQueryRecipes)->String{
         switch typeQuery {
         case .list(let number, let offset):
-            return       "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularit&offset=\(offset)&apiKey=\(apiKey)"
+            return       "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularity&offset=\(offset)&apiKey=\(apiKey)"
         case .search(let query, let number, let offset):
             return "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&offset=\(offset)&apiKey=\(apiKey)&query=\(query)"
         default:        //case .category(let cat):

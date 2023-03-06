@@ -144,7 +144,7 @@ extension RecipeViewController {
             //            button.getShadow(button)
             button.backgroundColor = .clear
             button.setTitleColor(.textAccent, for: .normal)
-            button.sizeToFit()
+//            button.sizeToFit()
             button.titleLabel?.font = UIFont.poppinsRegular16()
             button.titleLabel?.textColor = .textAccent
             button.titleLabel?.numberOfLines = 0
