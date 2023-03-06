@@ -15,6 +15,7 @@
 		574A399329AD0CA400C00F54 /* TableViewPrototypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A399229AD0CA300C00F54 /* TableViewPrototypeCell.swift */; };
 		57A53E9D29AD1E2600B0C6C4 /* RecipeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A53E9C29AD1E2600B0C6C4 /* RecipeListModel.swift */; };
 		57C4660229B3D27E00A6029F /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C4660129B3D27E00A6029F /* K.swift */; };
+		57DD2D4C29B61E56002F8E47 /* TableViewTopCustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD2D4B29B61E56002F8E47 /* TableViewTopCustomHeader.swift */; };
 		5E2121FE29AE3A3200584799 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2121FD29AE3A3200584799 /* RequestManager.swift */; };
 		5E21220029AE3AC400584799 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2121FF29AE3AC400584799 /* RecipeData.swift */; };
 		5E21220229AE3AF700584799 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E21220129AE3AF700584799 /* RecipeModel.swift */; };
@@ -52,6 +53,7 @@
 		57981E9A29AE21C700176BF1 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		57A53E9C29AD1E2600B0C6C4 /* RecipeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListModel.swift; sourceTree = "<group>"; };
 		57C4660129B3D27E00A6029F /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		57DD2D4B29B61E56002F8E47 /* TableViewTopCustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewTopCustomHeader.swift; sourceTree = "<group>"; };
 		5E2121FD29AE3A3200584799 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		5E2121FF29AE3AC400584799 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		5E21220129AE3AF700584799 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				C5AB697729B352C0008EDF4A /* RecipeCategoryCollectionView.swift */,
 				56BFE87229B485900042C796 /* LikeButton+UserD.swift */,
 				57A53E9F29AD42CB00B0C6C4 /* Cells */,
+				57DD2D4B29B61E56002F8E47 /* TableViewTopCustomHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				574A399329AD0CA400C00F54 /* TableViewPrototypeCell.swift in Sources */,
 				5EAA6C6429AB279B009A8E10 /* RecipeViewController.swift in Sources */,
 				C5AB698229B353AA008EDF4A /* CellsConstants.swift in Sources */,
+				57DD2D4C29B61E56002F8E47 /* TableViewTopCustomHeader.swift in Sources */,
 				56BFE87329B485900042C796 /* LikeButton+UserD.swift in Sources */,
 				5E21220629AE449B00584799 /* Secrets.swift in Sources */,
 				5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */,

@@ -17,7 +17,25 @@ class ReciptsListVC: UIViewController{
         // updating data for table view
         manager.fetchRecipe(query: .list(number: numbersOfCells, offset: 0))
         configureTableView()
+        // Register the custom header view.
+           tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: K.sectiontHeaderIndent)
     }
+    
+    // init custom tableView header
+     func tableView(_ tableView: UITableView,
+            viewForHeaderInSection section: Int) -> UIView? {
+       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: K.sectiontHeaderIndent) as! TableViewTopCustomHeader
+       view.title.text = "Popular recipes"
+       return view
+    }
+    
+    // Change size of MainTableViewTitle View box.
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+           if section == 0 {
+               return CGFloat(45)
+           }
+           return tableView.sectionHeaderHeight
+       }
     
     func configureTableView() {
         view.addSubview(tableView)
