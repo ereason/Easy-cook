@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		562944DA29AE1B16005D9EC3 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562944D929AE1B16005D9EC3 /* UIFont+Extensions.swift */; };
+		562AC75429B7492F00C08C22 /* RequestFavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562AC75329B7492F00C08C22 /* RequestFavoriteManager.swift */; };
 		5658AB4529ACD215004F8CFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */; };
 		5658AB4729ACD684004F8CFB /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658AB4629ACD684004F8CFB /* WelcomeView.swift */; };
 		56BFE87329B485900042C796 /* LikeButton+UserD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BFE87229B485900042C796 /* LikeButton+UserD.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		562944D929AE1B16005D9EC3 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		562AC75329B7492F00C08C22 /* RequestFavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFavoriteManager.swift; sourceTree = "<group>"; };
 		5658AB4429ACD215004F8CFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		5658AB4629ACD684004F8CFB /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		56BFE87229B485900042C796 /* LikeButton+UserD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeButton+UserD.swift"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				5E21220129AE3AF700584799 /* RecipeModel.swift */,
 				5E2121FF29AE3AC400584799 /* RecipeData.swift */,
 				5E2121FD29AE3A3200584799 /* RequestManager.swift */,
+				562AC75329B7492F00C08C22 /* RequestFavoriteManager.swift */,
 				57A53E9C29AD1E2600B0C6C4 /* RecipeListModel.swift */,
 				FA9B9E6A29B0E49B0047A85D /* RecipeListData.swift */,
 				C5AB697F29B35377008EDF4A /* RecieptListModel.swift */,
@@ -333,6 +336,7 @@
 				57A53E9D29AD1E2600B0C6C4 /* RecipeListModel.swift in Sources */,
 				C5AB698029B35377008EDF4A /* RecieptListModel.swift in Sources */,
 				5EAA6C6229AB279B009A8E10 /* SceneDelegate.swift in Sources */,
+				562AC75429B7492F00C08C22 /* RequestFavoriteManager.swift in Sources */,
 				9BBA560729B3309700EFEA18 /* UIImageView+Ext.swift in Sources */,
 				5E2121FE29AE3A3200584799 /* RequestManager.swift in Sources */,
 				5E21220229AE3AF700584799 /* RecipeModel.swift in Sources */,
