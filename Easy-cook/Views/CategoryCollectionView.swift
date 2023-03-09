@@ -9,9 +9,9 @@ import UIKit
 
 class CategoryCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
 
- var cells = [RecieptListModel]()
+ var cells = [String]()
 
- func set(cells: [RecieptListModel]) {
+ func set(cells: [String]) {
     self.cells = cells
 }
 
@@ -42,7 +42,7 @@ class CategoryCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
 // MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: K.reuseIdCategoryVC, for: indexPath) as! CategoryViewCell
-        cell.recipeLabel.text = cells[indexPath.row].title
+        cell.recipeLabel.text = cells[indexPath.row]
         return cell
     }
 

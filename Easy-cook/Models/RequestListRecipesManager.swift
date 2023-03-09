@@ -20,7 +20,7 @@ struct RequestListRecipesManager{
         case .list(let number, let offset):
             return       "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularity&offset=\(offset)&apiKey=\(apiKey)"
         case .search(let query, let number, let offset):
-            return "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&offset=\(offset)&apiKey=\(apiKey)&query=\(query)"
+            return "https://api.spoonacular.com/recipes/complexSearch?sort=popularity&sortDirection=desc&number=\(number)&offset=\(offset)&apiKey=\(apiKey)&query=\(query)"
         default:        //case .category(let cat):
             return ""
         }
@@ -41,6 +41,7 @@ struct RequestListRecipesManager{
                 }
                 if let safeData = data {
                     if let recipe = self.parseJSON(safeData) {
+                    
                         self.delegate?.didUpdateRecipeList(self, recipeList: recipe)
                     }
                 }

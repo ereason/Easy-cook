@@ -22,7 +22,7 @@ struct RecipeData: Codable {
     let cuisines, dishTypes, diets: [String]
     let occasions: [JSONAny]
     let winePairing: WinePairing
-    let instructions: String
+    let instructions: String?
     let analyzedInstructions: [AnalyzedInstruction]
     let originalID: JSONNull?
     let spoonacularSourceURL: String

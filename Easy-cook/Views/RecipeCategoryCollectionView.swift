@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
 
- var cells = [RecieptListModel]()
+ var cells = [ResultModel]()
 
- func set(cells: [RecieptListModel]) {
+ func set(cells: [ResultModel]) {
     self.cells = cells
+    self.reloadData()
 }
 
 // MARK: - init
@@ -42,7 +44,8 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
 // MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: K.reuseIdRecipwCategoryVC, for: indexPath) as! RecipeCategoryViewCell
-        cell.mainImage.image = cells[indexPath.row].image
+    
+        cell.mainImage.kf.setImage(with: URL(string: cells[indexPath.row].image))
         cell.recipeLabel.text = cells[indexPath.row].title
         return cell
     }
