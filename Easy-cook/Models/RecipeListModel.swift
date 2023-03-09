@@ -22,7 +22,7 @@ extension RecipeListModel{
 }
 
 // MARK: - ResultModel
-struct ResultModel {
+struct ResultModel: ShowableInCustomCell {
     let id: Int
     let title: String
     let image: String

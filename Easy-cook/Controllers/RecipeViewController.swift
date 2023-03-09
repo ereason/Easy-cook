@@ -1,5 +1,6 @@
 import UIKit
 import Kingfisher
+
 class RecipeViewController: UIViewController {
     
     var requestManager = RequestManager()
@@ -217,7 +218,7 @@ extension RecipeViewController: RequestManagerDelegate {
             
             self.titleLabel.text = recipe.title // title
             
-            self.imageView.kf.setImage(with: URL(string: recipe.imageURL))
+            self.imageView.kf.setImage(with: URL(string: recipe.image))
             
             // info labels
             self.timeLabel.text = "\(recipe.minutes) \nminutes"

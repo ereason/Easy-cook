@@ -26,7 +26,7 @@ extension NavigationViewController {
 
 
         let homeVC = generateNavigationViewController(vc: ReciptsListVC(), image: UIImage(named: K.mainImage)!)
-        let favoritesVC = generateNavigationViewController(vc: ReciptsListVC(),  image: UIImage(named: K.favoriteImage)!)
+        let favoritesVC = generateNavigationViewController(vc: FavVC(),  image: UIImage(named: K.favoriteImage)!)
         let searchVC = generateNavigationViewController(vc: SearchFoodViewController(), image: UIImage(named: K.searchImage)!)
 
         UINavigationBar.appearance().prefersLargeTitles = true

@@ -17,12 +17,12 @@ struct RecipeData: Codable {
     let sourceURL: String
     let image: String
     let imageType: String
-    let nutrition: Nutrition
+    let nutrition: Nutrition?
     let summary: String
     let cuisines, dishTypes, diets: [String]
     let occasions: [JSONAny]
-    let winePairing: WinePairing
-    let instructions: String
+    let winePairing: WinePairing?
+    let instructions: String?
     let analyzedInstructions: [AnalyzedInstruction]
     let originalID: JSONNull?
     let spoonacularSourceURL: String
