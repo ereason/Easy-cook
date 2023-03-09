@@ -1,9 +1,10 @@
 import Foundation
 
 // MARK: - RecipeModel
-struct RecipeModel {
+struct RecipeModel:ShowableInCustomCell {
+    let id: Int
     let title: String
-    let imageURL: String
+    let image: String
     let imageType: String
     let servings: Int
     let likes: Int
@@ -17,8 +18,9 @@ struct RecipeModel {
 // MARK: RecipeModel convenience initializers
 extension RecipeModel{
     init(data: RecipeData){
+        self.id = data.id
         self.title=data.title
-        self.imageURL=data.image.replacingOccurrences(of: "http:", with: "https:")
+        self.image=data.image.replacingOccurrences(of: "http:", with: "https:")
         self.imageType=data.imageType
         self.servings=data.servings
         self.likes=data.aggregateLikes

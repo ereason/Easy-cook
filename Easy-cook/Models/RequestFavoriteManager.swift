@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - RequestFavoriteManagerDelegate
 protocol RequestFavoriteManagerDelegate{
-    func didUpdateRecipe(_ requestManager: RequestFavoriteManager, recipe: RecipeModel)
+    func didUpdateRecipe(_ requestManager: RequestFavoriteManager, recipe: [RecipeModel])
     func didFailWithError(error: Error)
 }
 
@@ -29,13 +29,13 @@ struct RequestFavoriteManager{
         return "Error"
     }
     
-    func getURL(recipeId: Int)->String{
+    func getURL()->String{
         
-        return "https://api.spoonacular.com/recipes/informationBulk?apiKey\(apiKey)&ids=\(formatIdToString())"
+        return "https://api.spoonacular.com/recipes/informationBulk?apiKey=\(apiKey)&ids=\(formatIdToString())"
     }
     
-    func fetchRecipe(_ recipeId: Int) {
-        performRequest(with: getURL(recipeId: recipeId))
+    func fetchRecipe() {
+        performRequest(with: getURL())
     }
     
     func performRequest(with urlString: String) {
@@ -48,6 +48,7 @@ struct RequestFavoriteManager{
                 }
                 if let safeData = data {
                     if let recipe = self.parseJSON(safeData) {
+                        print(recipe)
                         self.delegate?.didUpdateRecipe(self, recipe: recipe)
                     }
                 }
@@ -57,12 +58,18 @@ struct RequestFavoriteManager{
     }
     
     
-    func parseJSON(_ recipeData: Data) -> RecipeModel?{
+    func parseJSON(_ recipeData: Data) -> [RecipeModel]?{
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(RecipeData.self, from: recipeData)
+            let decodedData = try decoder.decode([RecipeData].self, from: recipeData)
             
-            return RecipeModel(data: decodedData)
+            var result: [RecipeModel] = []
+            
+            decodedData.forEach{
+                result.append(RecipeModel( data: $0))
+            }
+            
+            return result
         } catch {
             delegate?.didFailWithError(error: error)
             return nil

@@ -1,6 +1,12 @@
 import UIKit
 import Kingfisher
 
+protocol ShowableInCustomCell{
+    var id: Int { get }
+    var image: String { get }
+    var title: String { get }
+}
+
 class TableViewPrototypeCell: UITableViewCell {
     
     var recieptImageView = UIImageView()
@@ -23,9 +29,8 @@ class TableViewPrototypeCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(recieptList: ResultModel) {
+    func set(recieptList: ShowableInCustomCell) {
         recieptImageView.kf.setImage(with: URL(string: recieptList.image))
-        //recieptImageView.image =
         recieptTitleLabel.text = recieptList.title
         recieptTitleLabel.textColor = .textAccent
     }
