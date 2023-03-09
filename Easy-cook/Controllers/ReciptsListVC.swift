@@ -20,8 +20,20 @@ class ReciptsListVC: UIViewController{
         manager.fetchRecipe(query: .list(number: loadNum, offset: offset))
         configureTableView()
         // Register the custom header view.
-           tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: K.sectiontHeaderIndent)
+        tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: K.sectiontHeaderIndent)
     }
+    
+    // Override 2 methods to dismiss empty space in a top of Table view (this space auto creates for navigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     
     // init custom tableView header
      func tableView(_ tableView: UITableView,
@@ -62,6 +74,7 @@ class ReciptsListVC: UIViewController{
 
 // MARK: - Extension (Delegate and DataSource)
 extension ReciptsListVC: UITableViewDelegate, UITableViewDataSource {
+    
     
     // Here we setup how many rows do we wants to set up in table view ( Its should be equal to API Request of reciepts.count
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
