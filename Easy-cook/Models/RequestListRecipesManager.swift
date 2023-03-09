@@ -1,5 +1,6 @@
 import Foundation
 
+//описан протокол делегата запроса списка рецептов
 protocol RequestListRecipeDelegate{
     func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel)
     func didFailWithError(error: Error)
