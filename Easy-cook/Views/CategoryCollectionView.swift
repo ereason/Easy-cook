@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol testDelegate2{
+    func pickCategoty(ct: String)
+}
+
+
 class CategoryCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
 
- var cells = [RecieptListModel]()
-
- func set(cells: [RecieptListModel]) {
+    var delegateTest2: testDelegate2?
+    
+ var cells = [String]()
+ func set(cells: [String]) {
     self.cells = cells
 }
 
@@ -42,10 +48,14 @@ class CategoryCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
 // MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: K.reuseIdCategoryVC, for: indexPath) as! CategoryViewCell
-        cell.recipeLabel.text = cells[indexPath.row].title
+        cell.recipeLabel.text = cells[indexPath.row]
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+        delegateTest2?.pickCategoty(ct: cells[indexPath.row])
+    }
 }
 
 //MARK: - sizeForItem

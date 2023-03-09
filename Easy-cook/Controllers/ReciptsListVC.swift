@@ -19,8 +19,8 @@ class ReciptsListVC: BaseVC{
     
     //Updating amount of shoings cells it TableView
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+       
         if indexPath.row == reciepts.count - 3 {
-           
             if isEnabled{
                 isEnabled = false
                 offset += loadNum
@@ -50,7 +50,7 @@ extension ReciptsListVC: RequestListRecipeDelegate{
         }
         
         isEnabled = true
-        print( self.reciepts.count)
+        //print( self.reciepts.count)
     }
     
     func didFailWithError(error: Error) {
