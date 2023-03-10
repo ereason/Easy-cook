@@ -20,7 +20,7 @@ extension RecipeModel{
     init(data: RecipeData){
         self.id = data.id
         self.title=data.title
-        self.imageURL=data.image.replacingOccurrences(of: "http:", with: "https:")
+        self.image=data.image.replacingOccurrences(of: "http:", with: "https:")
                         .replacingOccurrences(of: "312x231", with: "480x360") //TODO
         self.imageType=data.imageType
         self.servings=data.servings
