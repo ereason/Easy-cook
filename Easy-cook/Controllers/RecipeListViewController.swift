@@ -1,6 +1,6 @@
 import UIKit
 
-class ReciptsListVC: BaseVC{
+class RecipeListViewController: BaseFeedViewController{
     var manager = RequestListRecipesManager()
     var loadNum = 20
     var offset = 0
@@ -14,7 +14,7 @@ class ReciptsListVC: BaseVC{
         manager.fetchRecipe(query: .list(number: loadNum, offset: offset))
         configureTableView()
         // Register the custom header view.
-        tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: K.sectiontHeaderIndent)
+        tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: StringConstants.sectiontHeaderIndent)
     }
     
     //Updating amount of shoings cells it TableView
@@ -36,7 +36,7 @@ class ReciptsListVC: BaseVC{
 }
 
 // MARK: - Extension (RequestListRecipeDelegate)
-extension ReciptsListVC: RequestListRecipeDelegate{
+extension RecipeListViewController: RequestListRecipeDelegate{
   
     
     func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel) {

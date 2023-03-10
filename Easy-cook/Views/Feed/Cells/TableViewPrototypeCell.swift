@@ -1,12 +1,6 @@
 import UIKit
 import Kingfisher
 
-protocol ShowableInCustomCell{
-    var id: Int { get }
-    var image: String { get }
-    var title: String { get }
-}
-
 class TableViewPrototypeCell: UITableViewCell {
     
     var recieptImageView = UIImageView()

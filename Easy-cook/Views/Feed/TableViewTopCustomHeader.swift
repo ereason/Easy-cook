@@ -1,10 +1,3 @@
-//
-//  TableViewTopCustomHeader.swift
-//  Easy-cook
-//
-//  Created by иван Бирюков on 06.03.2023.
-//
-
 import UIKit
 
 class TableViewTopCustomHeader: UITableViewHeaderFooterView {

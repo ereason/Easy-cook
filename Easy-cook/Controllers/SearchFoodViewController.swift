@@ -1,13 +1,13 @@
 import UIKit
 
-class SearchFoodViewController: UIViewController, testDelegate, testDelegate2 {
+class SearchFoodViewController: UIViewController, RecipeCategoryCollectionViewDelegate, CategoryCollectionViewDelegate {
   
-    func pickCategoty(ct: String) {
+    func pickCategoty(pickedCategory: String) {
         recipeCategoryCollectionView.clear()
         searchString =  ""
         searchBar.text = ""
         offset  = 0
-        request = .category(cat: ct, number: loadNum, offset: offset)
+        request = .category(cat: pickedCategory, number: loadNum, offset: offset)
         manager.fetchRecipe(query: request!)
     }
     
@@ -59,12 +59,12 @@ class SearchFoodViewController: UIViewController, testDelegate, testDelegate2 {
         setupView()
         setupConstraints()
         
-        recipeCategoryCollectionView.delegateTest = self
-        categoryCollectionView.delegateTest2 = self
+        recipeCategoryCollectionView.actionDelegate = self
+        categoryCollectionView.pickDelegate = self
         categoryCollectionView.set(cells: categories)
     }
     
-    func showNewVC(id: Int) {
+    func cellTapAction(id: Int) {
         present(RecipeViewController(id), animated: true, completion: nil)
     }
     
@@ -117,9 +117,9 @@ extension SearchFoodViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         recipeCategoryCollectionView.clear()
-        searchString = searchBar.text!
+        searchString = searchBar.text!.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
         offset  = 0
-        
+        print(searchString)
         request = .search(query: searchString, number: loadNum, offset: offset)
         manager.fetchRecipe(query: request!)
         searchActive = false

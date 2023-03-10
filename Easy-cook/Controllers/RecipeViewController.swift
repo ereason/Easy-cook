@@ -1,6 +1,7 @@
 import UIKit
 import Kingfisher
 import SafariServices
+
 class RecipeViewController: UIViewController {
     
     var requestManager = RequestManager()

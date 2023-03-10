@@ -1,12 +1,4 @@
-//
-//  RecipeCategoryViewCell.swift
-//  Easy-cook
-//
-//  Created by Дербе Эмма on 04.03.2023.
-//
-
 import UIKit
-
 
 class RecipeCategoryViewCell: UICollectionViewCell {
 
@@ -36,7 +28,8 @@ class RecipeCategoryViewCell: UICollectionViewCell {
         return label
     }()
 
-
+    var recieptLikeButton = LikeButton()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
@@ -52,10 +45,13 @@ class RecipeCategoryViewCell: UICollectionViewCell {
 //MARK: - setupCellConstraints
 extension RecipeCategoryViewCell {
     func setupCell() {
+
         backgroundColor = .backgroundColor
         addSubview(backgroundImage)
         backgroundImage.addSubview(mainImage)
         backgroundImage.addSubview(recipeLabel)
+        
+        contentView.addSubview(recieptLikeButton)
 
     }
 }
@@ -76,5 +72,11 @@ extension RecipeCategoryViewCell {
         recipeLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         recipeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         recipeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
+        
+        recieptLikeButton.translatesAutoresizingMaskIntoConstraints = false
+        recieptLikeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        recieptLikeButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        recieptLikeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
+        recieptLikeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
     }
 }

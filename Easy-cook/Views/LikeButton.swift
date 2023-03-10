@@ -1,17 +1,9 @@
-//
-//  button.swift
-//  Easy-cook
-//
-//  Created by Sergey Azimov on 05.03.2023.
-//
-
 import UIKit
 
-class LikeButton:UIButton {
+class LikeButton: UIButton {
     
     static var subscribers = [Int: Set<LikeButton>]()
-    
-    private let defaults = UserDefaults.standard
+    static var store = UserDefaultsController()
     
     var itemId = 0
     
@@ -19,7 +11,6 @@ class LikeButton:UIButton {
         super.init(frame: .zero)
         tintColor = .redAccent
         addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-      //  updateApperance()
     }
     
     required init?(coder: NSCoder) {
@@ -39,37 +30,28 @@ class LikeButton:UIButton {
     }
     
     func updateApperance() {
-       
+        
         if isLiked {
-             
-             LikeButton.subscribers[itemId]!.forEach({
-                 $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-             })
-         } else {
-             
-             LikeButton.subscribers[itemId]!.forEach({
-                 $0.setImage(UIImage(systemName: "heart"), for: .normal)
-             })
-         }
+            
+            LikeButton.subscribers[itemId]!.forEach({
+                $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            })
+        } else {
+            
+            LikeButton.subscribers[itemId]!.forEach({
+                $0.setImage(UIImage(systemName: "heart"), for: .normal)
+            })
+        }
         
     }
-    //check item
+    
+    
     var isLiked: Bool {
-        return getSetIds().contains(itemId)
+        return LikeButton.store.getIds().contains(itemId)
     }
     
-    //saving
-    private func saveFavoriteId(_ ids: Set<Int>) {
-        defaults.set(Array(ids), forKey: K.idFavorite)
-    }
-    //Set with id
-    func getSetIds() -> Set<Int> {
-        let likedsArray = defaults.object(forKey: K.idFavorite) as? [Int] ?? []
-        return Set(likedsArray)
-    }
-    //buttonTapped
     @objc func buttonTapped() {
-        var ids = getSetIds()
+        var ids = LikeButton.store.getIds()
         if isLiked {
             print("remove")
             ids.remove(itemId)
@@ -80,16 +62,15 @@ class LikeButton:UIButton {
             print(ids)
         }
         
-        saveFavoriteId(ids)
+        LikeButton.store.saveFavoriteId(ids)
         updateApperance()
     }
     
     deinit {
         LikeButton.subscribers[itemId]!.remove(self)
-       
+        
         if LikeButton.subscribers[itemId]!.count == 0{
             LikeButton.subscribers.removeValue(forKey: itemId)
-            
-        }// perform the deinitialization
+        }
     }
 }

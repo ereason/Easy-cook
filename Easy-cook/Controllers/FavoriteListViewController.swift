@@ -1,6 +1,6 @@
 import UIKit
 
-class FavVC: BaseVC{
+class FavoriteListViewController: BaseFeedViewController{
     
     var manager = RequestFavoriteManager()
 
@@ -12,7 +12,7 @@ class FavVC: BaseVC{
         manager.fetchRecipe()
         configureTableView()
         // Register the custom header view.
-        tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: K.sectiontHeaderIndent)
+        tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: StringConstants.sectiontHeaderIndent)
     }
 
     // Override 2 methods to dismiss empty space in a top of Table view (this space auto creates for navigationBar
@@ -33,7 +33,7 @@ class FavVC: BaseVC{
 }
 
 // MARK: - Extension (RequestListRecipeDelegate)
-extension FavVC: RequestFavoriteManagerDelegate{
+extension FavoriteListViewController: RequestFavoriteManagerDelegate{
 
     func didUpdateRecipe(_ requestManager: RequestFavoriteManager, recipe: [RecipeModel]) {
         DispatchQueue.main.async {

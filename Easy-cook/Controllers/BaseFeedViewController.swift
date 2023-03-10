@@ -12,7 +12,7 @@ struct Cells {
     static let recieptCell = "TableViewPrototypeCell"
 }
 
-class BaseVC: UIViewController{
+class BaseFeedViewController: UIViewController{
    
     var tableView = UITableView()
     var reciepts: [ShowableInCustomCell] = []
@@ -58,7 +58,7 @@ class BaseVC: UIViewController{
     // init custom tableView header
      func tableView(_ tableView: UITableView,
             viewForHeaderInSection section: Int) -> UIView? {
-       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: K.sectiontHeaderIndent) as! TableViewTopCustomHeader
+       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: StringConstants.sectiontHeaderIndent) as! TableViewTopCustomHeader
        view.title.text = "Popular recipes"
        return view
     }
@@ -66,7 +66,7 @@ class BaseVC: UIViewController{
 }
 
 // MARK: - Extension (Delegate and DataSource)
-extension BaseVC: UITableViewDelegate, UITableViewDataSource {
+extension BaseFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Here we setup how many rows do we wants to set up in table view ( Its should be equal to API Request of reciepts.count
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

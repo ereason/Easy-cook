@@ -1,28 +1,14 @@
-//
-//  RequestFavorite.swift
-//  Easy-cook
-//
-//  Created by Sergey Azimov on 07.03.2023.
-//
-
 import Foundation
-
-// MARK: - RequestFavoriteManagerDelegate
-//протокол запроса избранных рецептов
-protocol RequestFavoriteManagerDelegate{
-    func didUpdateRecipe(_ requestManager: RequestFavoriteManager, recipe: [RecipeModel])
-    func didFailWithError(error: Error)
-}
 
 // MARK: - RequestFavoriteManager
 struct RequestFavoriteManager{
     var delegate: RequestFavoriteManagerDelegate?
-    let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
+    let apiKey = StringConstants.api_Key
     
-    let arrayId = UserDefaults.standard.array(forKey: K.idFavorite)
+    let arrayId = UserDefaults.standard.array(forKey: StringConstants.idFavorite)
     
     func formatIdToString() -> String {
-        if let arrayId = UserDefaults.standard.array(forKey: K.idFavorite) as? [Int] {
+        if let arrayId = UserDefaults.standard.array(forKey: StringConstants.idFavorite) as? [Int] {
             let IdString = arrayId.map { String($0) }.joined(separator: ",")
             print("https://api.spoonacular.com/recipes/informationBulk?apiKey\(apiKey)&ids=\(IdString)")
             return IdString

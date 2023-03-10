@@ -1,11 +1,5 @@
 import Foundation
 
-//описан протокол делегата запроса списка рецептов
-protocol RequestListRecipeDelegate{
-    func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel)
-    func didFailWithError(error: Error)
-}
-
 enum TypeQueryRecipes {
     case list(number: Int, offset: Int)
     case search(query: String, number: Int, offset: Int)
@@ -13,7 +7,7 @@ enum TypeQueryRecipes {
     
     mutating func addOffset(off: Int) {
         switch self{
-        
+            
         case let .list(number,offset):
             self = .list(number: number,offset: offset + off)
             
@@ -26,11 +20,10 @@ enum TypeQueryRecipes {
     }
 }
 
-
 struct RequestListRecipesManager{
     var delegate: RequestListRecipeDelegate?
     
-    let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
+    let apiKey = StringConstants.api_Key
     
     func getURL(typeQuery: TypeQueryRecipes)->String{
         switch typeQuery {
@@ -40,12 +33,9 @@ struct RequestListRecipesManager{
             return "https://api.spoonacular.com/recipes/complexSearch?sort=popularity&sortDirection=desc&number=\(number)&offset=\(offset)&apiKey=\(apiKey)&query=\(query)"
         case .category(let cat, let number, let offset):
             return "https://api.spoonacular.com/recipes/complexSearch?sort=popularity&sortDirection=desc&number=\(number)&offset=\(offset)&apiKey=\(apiKey)&cuisine=\(cat)"
-        default:
-            return ""
         }
     }
     
-    //func fetchRecipe(number: Int, offset: Int, query: String)
     func fetchRecipe(query: TypeQueryRecipes) {
         performRequest(with: getURL(typeQuery: query))
     }

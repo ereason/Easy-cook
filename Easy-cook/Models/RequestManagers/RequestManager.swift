@@ -1,17 +1,10 @@
 import Foundation
 
-// MARK: - RequestManagerDelegate
-//протокол делегата одного рецепта
-protocol RequestManagerDelegate{
-    func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel)
-    func didFailWithError(error: Error)
-}
-
 // MARK: - RequestManager
 struct RequestManager{
     var delegate: RequestManagerDelegate?
     
-    let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
+    let apiKey = StringConstants.api_Key
     func getURL(recipeId: Int)->String{
         return "https://api.spoonacular.com/recipes/\(recipeId)/information?apiKey=\(apiKey)&includeNutrition=true"
     }
@@ -37,7 +30,6 @@ struct RequestManager{
             task.resume()
         }
     }
-    
     
     func parseJSON(_ recipeData: Data) -> RecipeModel?{
         let decoder = JSONDecoder()

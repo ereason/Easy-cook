@@ -4,7 +4,7 @@ class WelcomeView: UIView {
     
     private let backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
-        backgroundImage.image = UIImage(named: K.mainViewBackgroundImage )
+        backgroundImage.image = UIImage(named: StringConstants.mainViewBackgroundImage )
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         return backgroundImage
     }()
@@ -60,6 +60,7 @@ class WelcomeView: UIView {
         addSubview(bottomSubtitleLabel)
     }
 }
+
 //MARK: - SetConstraints
 extension WelcomeView {
    private func setConstraints() {

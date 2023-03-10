@@ -7,7 +7,6 @@ struct RecipeListModel {
 }
 
 // MARK: RecipeListModel convenience initializers
-
 extension RecipeListModel{
     init(data: Recipes) {
         self.results = []
@@ -30,7 +29,6 @@ struct ResultModel: ShowableInCustomCell {
 }
 
 // MARK: ResultModel convenience initializers
-
 extension ResultModel{
     init(data: Result) {
         self.id = data.id

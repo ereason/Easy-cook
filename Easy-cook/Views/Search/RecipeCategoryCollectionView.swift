@@ -1,24 +1,11 @@
-//
-//  RecipeCategoryCollectionView.swift
-//  Easy-cook
-//
-//  Created by Дербе Эмма on 04.03.2023.
-//
-
 import UIKit
 import Kingfisher
-
-protocol testDelegate{
-    func showNewVC(id: Int)
-    func loadMore()
-}
-
 
 class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var cells = [ResultModel]()
+    var actionDelegate: RecipeCategoryCollectionViewDelegate?
     
-    var delegateTest: testDelegate?
     func set(cells: [ResultModel]) {
         self.cells = cells
         self.reloadData()
@@ -45,12 +32,12 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
         super.init(frame: .zero, collectionViewLayout: layout)
         translatesAutoresizingMaskIntoConstraints = false
         layout.minimumLineSpacing = 16
-        contentInset = UIEdgeInsets(top: 0, left: CellsConstants.leftDestination, bottom: 0, right: CellsConstants.rightDestination)
+        contentInset = UIEdgeInsets(top: 0, left: CellConstants.leftDestination, bottom: 0, right: CellConstants.rightDestination)
         
         backgroundColor = .backgroundColor
         delegate = self
         dataSource = self
-        register(RecipeCategoryViewCell.self, forCellWithReuseIdentifier: K.reuseIdRecipwCategoryVC)
+        register(RecipeCategoryViewCell.self, forCellWithReuseIdentifier: StringConstants.reuseIdRecipwCategoryVC)
     }
     
     required init?(coder: NSCoder) {
@@ -64,23 +51,24 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
     
     // MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: K.reuseIdRecipwCategoryVC, for: indexPath) as! RecipeCategoryViewCell
+        let cell = dequeueReusableCell(withReuseIdentifier: StringConstants.reuseIdRecipwCategoryVC, for: indexPath) as! RecipeCategoryViewCell
         
         cell.mainImage.kf.setImage(with: URL(string: cells[indexPath.row].image))
         cell.recipeLabel.text = cells[indexPath.row].title
+        cell.recieptLikeButton.setID(id:  cells[indexPath.row].id)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
-        delegateTest?.showNewVC(id: cells[indexPath.row].id)
+        actionDelegate?.cellTapAction(id: cells[indexPath.row].id)
     }
     
     //Updating amount of shoings cells it TableView
     internal func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if indexPath.row == cells.count - 3 {
-            delegateTest?.loadMore()
+            actionDelegate?.loadMore()
         }
     }
     

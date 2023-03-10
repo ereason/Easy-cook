@@ -1,10 +1,3 @@
-//
-//  CategoryViewCell.swift
-//  Easy-cook
-//
-//  Created by Дербе Эмма on 04.03.2023.
-//
-
 import UIKit
 
 class CategoryViewCell: UICollectionViewCell {

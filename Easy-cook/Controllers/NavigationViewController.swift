@@ -25,9 +25,9 @@ extension NavigationViewController {
         UITabBar.appearance().tintColor = UIColor.redAccent
 
 
-        let homeVC = generateNavigationViewController(vc: ReciptsListVC(), image: UIImage(named: K.mainImage)!)
-        let favoritesVC = generateNavigationViewController(vc: FavVC(),  image: UIImage(named: K.favoriteImage)!)
-        let searchVC = generateNavigationViewController(vc: SearchFoodViewController(), image: UIImage(named: K.searchImage)!)
+        let homeVC = generateNavigationViewController(vc: RecipeListViewController(), image: UIImage(named: StringConstants.mainImage)!)
+        let favoritesVC = generateNavigationViewController(vc: FavoriteListViewController(),  image: UIImage(named: StringConstants.favoriteImage)!)
+        let searchVC = generateNavigationViewController(vc: SearchFoodViewController(), image: UIImage(named: StringConstants.searchImage)!)
 
         UINavigationBar.appearance().prefersLargeTitles = true
         viewControllers = [homeVC, favoritesVC, searchVC]

@@ -37,7 +37,6 @@ struct RecipeData: Codable {
 }
 
 // MARK: RecipeData convenience initializers and mutators
-
 extension RecipeData {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(RecipeData.self, from: data)
@@ -45,7 +44,7 @@ extension RecipeData {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -160,7 +159,7 @@ extension AnalyzedInstruction {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -197,7 +196,6 @@ struct Step: Codable {
 }
 
 // MARK: Step convenience initializers and mutators
-
 extension Step {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Step.self, from: data)
@@ -205,7 +203,7 @@ extension Step {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -246,7 +244,6 @@ struct Ent: Codable {
 }
 
 // MARK: Ent convenience initializers and mutators
-
 extension Ent {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Ent.self, from: data)
@@ -254,7 +251,7 @@ extension Ent {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -293,7 +290,6 @@ struct Length: Codable {
 }
 
 // MARK: Length convenience initializers and mutators
-
 extension Length {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Length.self, from: data)
@@ -301,7 +297,7 @@ extension Length {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -342,7 +338,6 @@ struct ExtendedIngredient: Codable {
 }
 
 // MARK: ExtendedIngredient convenience initializers and mutators
-
 extension ExtendedIngredient {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(ExtendedIngredient.self, from: data)
@@ -350,7 +345,7 @@ extension ExtendedIngredient {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -404,7 +399,6 @@ struct Measures: Codable {
 }
 
 // MARK: Measures convenience initializers and mutators
-
 extension Measures {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Measures.self, from: data)
@@ -412,7 +406,7 @@ extension Measures {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -447,7 +441,6 @@ struct Metric: Codable {
 }
 
 // MARK: Metric convenience initializers and mutators
-
 extension Metric {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Metric.self, from: data)
@@ -455,7 +448,7 @@ extension Metric {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -494,7 +487,6 @@ struct Nutrition: Codable {
 }
 
 // MARK: Nutrition convenience initializers and mutators
-
 extension Nutrition {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Nutrition.self, from: data)
@@ -502,7 +494,7 @@ extension Nutrition {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -544,7 +536,6 @@ struct CaloricBreakdown: Codable {
 }
 
 // MARK: CaloricBreakdown convenience initializers and mutators
-
 extension CaloricBreakdown {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(CaloricBreakdown.self, from: data)
@@ -552,7 +543,7 @@ extension CaloricBreakdown {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -591,7 +582,6 @@ struct Flavonoid: Codable {
 }
 
 // MARK: Flavonoid convenience initializers and mutators
-
 extension Flavonoid {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Flavonoid.self, from: data)
@@ -599,7 +589,7 @@ extension Flavonoid {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -651,7 +641,6 @@ struct Ingredient: Codable {
 }
 
 // MARK: Ingredient convenience initializers and mutators
-
 extension Ingredient {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Ingredient.self, from: data)
@@ -659,7 +648,7 @@ extension Ingredient {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -700,7 +689,6 @@ struct WeightPerServing: Codable {
 }
 
 // MARK: WeightPerServing convenience initializers and mutators
-
 extension WeightPerServing {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(WeightPerServing.self, from: data)
@@ -708,7 +696,7 @@ extension WeightPerServing {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -744,7 +732,6 @@ struct WinePairing: Codable {
 }
 
 // MARK: WinePairing convenience initializers and mutators
-
 extension WinePairing {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(WinePairing.self, from: data)
@@ -752,7 +739,7 @@ extension WinePairing {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -787,9 +774,8 @@ struct ProductMatch: Codable {
     let id: Int
     let title, description, price: String
     let imageURL: String
-//    let averageRating, ratingCount: Int // !
     let averageRating: Double
-    let ratingCount: Int // new
+    let ratingCount: Int
     let score: Double
     let link: String
 
@@ -801,7 +787,6 @@ struct ProductMatch: Codable {
 }
 
 // MARK: ProductMatch convenience initializers and mutators
-
 extension ProductMatch {
     init(data: Data) throws {
         self = try newJSONDecoder().decode(ProductMatch.self, from: data)
@@ -809,7 +794,7 @@ extension ProductMatch {
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
         guard let data = json.data(using: encoding) else {
-            throw NSError(domain: K.JSONDecoding, code: 0, userInfo: nil)
+            throw NSError(domain: StringConstants.JSONDecoding, code: 0, userInfo: nil)
         }
         try self.init(data: data)
     }
@@ -853,7 +838,6 @@ extension ProductMatch {
 }
 
 // MARK: - Helper functions for creating encoders and decoders
-
 func newJSONDecoder() -> JSONDecoder {
     let decoder = JSONDecoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
@@ -871,15 +855,10 @@ func newJSONEncoder() -> JSONEncoder {
 }
 
 // MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
+class JSONNull: Codable {
 
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
-    }
-
-    public var hashValue: Int {
-        return 0
     }
 
     public init() {}
