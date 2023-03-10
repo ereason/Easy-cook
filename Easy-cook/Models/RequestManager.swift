@@ -1,6 +1,7 @@
 import Foundation
 
 // MARK: - RequestManagerDelegate
+//протокол делегата одного рецепта
 protocol RequestManagerDelegate{
     func didUpdateRecipe(_ requestManager: RequestManager, recipe: RecipeModel)
     func didFailWithError(error: Error)

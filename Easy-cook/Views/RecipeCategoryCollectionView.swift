@@ -6,16 +6,39 @@
 //
 
 import UIKit
+import Kingfisher
 
-class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
-
- var cells = [RecieptListModel]()
-
- func set(cells: [RecieptListModel]) {
-    self.cells = cells
+protocol testDelegate{
+    func showNewVC(id: Int)
+    func loadMore()
 }
 
-// MARK: - init
+
+class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var cells = [ResultModel]()
+    
+    var delegateTest: testDelegate?
+    func set(cells: [ResultModel]) {
+        self.cells = cells
+        self.reloadData()
+    }
+    
+    func add(cells: [ResultModel]) {
+        cells.forEach({
+            self.cells.append($0)
+        })
+    
+        self.reloadData()
+    }
+    
+    func clear() {
+        cells.removeAll()
+        self.reloadData()
+    }
+
+
+    // MARK: - init
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -23,30 +46,44 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
         translatesAutoresizingMaskIntoConstraints = false
         layout.minimumLineSpacing = 16
         contentInset = UIEdgeInsets(top: 0, left: CellsConstants.leftDestination, bottom: 0, right: CellsConstants.rightDestination)
-
+        
         backgroundColor = .backgroundColor
         delegate = self
         dataSource = self
         register(RecipeCategoryViewCell.self, forCellWithReuseIdentifier: K.reuseIdRecipwCategoryVC)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-// MARK: - numberOFItemsInSection
+    
+    // MARK: - numberOFItemsInSection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cells.count
     }
-
-// MARK: - cellForItemAt
+    
+    // MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: K.reuseIdRecipwCategoryVC, for: indexPath) as! RecipeCategoryViewCell
-        cell.mainImage.image = cells[indexPath.row].image
+        
+        cell.mainImage.kf.setImage(with: URL(string: cells[indexPath.row].image))
         cell.recipeLabel.text = cells[indexPath.row].title
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+        delegateTest?.showNewVC(id: cells[indexPath.row].id)
+    }
+    
+    //Updating amount of shoings cells it TableView
+    internal func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == cells.count - 3 {
+            delegateTest?.loadMore()
+        }
+    }
+    
 }
 
 //MARK: - sizeForItem

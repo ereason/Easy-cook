@@ -1,26 +1,46 @@
 import Foundation
 
+//описан протокол делегата запроса списка рецептов
 protocol RequestListRecipeDelegate{
     func didUpdateRecipeList(_ requestListRecipeManager: RequestListRecipesManager, recipeList: RecipeListModel)
     func didFailWithError(error: Error)
 }
 
+enum TypeQueryRecipes {
+    case list(number: Int, offset: Int)
+    case search(query: String, number: Int, offset: Int)
+    case category(cat: String, number: Int, offset: Int)
+    
+    mutating func addOffset(off: Int) {
+        switch self{
+        
+        case let .list(number,offset):
+            self = .list(number: number,offset: offset + off)
+            
+        case let .search(query,number,offset):
+            self = .search(query: query,number: number,offset: offset + off)
+            
+        case let .category(cat,number,offset):
+            self = .category(cat: cat,number: number,offset: offset + off)
+        }
+    }
+}
+
+
 struct RequestListRecipesManager{
     var delegate: RequestListRecipeDelegate?
-    enum TypeQueryRecipes {
-        case list(number: Int, offset: Int)
-        case search(query: String, number: Int, offset: Int)
-        case category(cat: String)
-    }
     
     let apiKey = Secrets.API_KEY  //Dont forget to set in Secrets.swift !!!!
+    
     func getURL(typeQuery: TypeQueryRecipes)->String{
         switch typeQuery {
         case .list(let number, let offset):
-            return       "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularity&offset=\(offset)&apiKey=\(apiKey)"
+            return       "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&sort=popularity&sortDirection=desc&offset=\(offset)&apiKey=\(apiKey)"
         case .search(let query, let number, let offset):
-            return "https://api.spoonacular.com/recipes/complexSearch?number=\(number)&offset=\(offset)&apiKey=\(apiKey)&query=\(query)"
-        default:        //case .category(let cat):
+            return "https://api.spoonacular.com/recipes/complexSearch?sort=popularity&sortDirection=desc&number=\(number)&offset=\(offset)&apiKey=\(apiKey)&query=\(query)"
+        case .category(let cat, let number, let offset):
+            return "https://api.spoonacular.com/recipes/complexSearch?sort=popularity&sortDirection=desc&number=\(number)&offset=\(offset)&apiKey=\(apiKey)&cuisine=\(cat)"
+        default:
             return ""
         }
     }
@@ -40,6 +60,7 @@ struct RequestListRecipesManager{
                 }
                 if let safeData = data {
                     if let recipe = self.parseJSON(safeData) {
+                        
                         self.delegate?.didUpdateRecipeList(self, recipeList: recipe)
                     }
                 }

@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - RequestFavoriteManagerDelegate
+//протокол запроса избранных рецептов
 protocol RequestFavoriteManagerDelegate{
     func didUpdateRecipe(_ requestManager: RequestFavoriteManager, recipe: [RecipeModel])
     func didFailWithError(error: Error)
