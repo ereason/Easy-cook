@@ -1,11 +1,14 @@
 import UIKit
 import Kingfisher
-
+import SafariServices
 class RecipeViewController: UIViewController {
     
     var requestManager = RequestManager()
     
     var subviewsCount = Int()
+    
+    //Collection View
+    var collectionView: UICollectionView!
     
     var activityIndicatorView: UIActivityIndicatorView = { //indicator
         let indicator = UIActivityIndicatorView(style: .large)
@@ -38,7 +41,7 @@ class RecipeViewController: UIViewController {
     
     var imageView: UIImageView = {
         let image = UIImageView()
-        image.layer.cornerRadius = 10
+        image.layer.cornerRadius = 20
         image.clipsToBounds = true
         return image
     }()
@@ -72,18 +75,19 @@ class RecipeViewController: UIViewController {
         return label
     }()
     
+    // ingredients label
+    var ingredientsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "   Ingredients Check List"
+        label.textAlignment = .left
+        label.textColor = .textAccent
+        label.font = UIFont.poppinsBold18()
+        return label
+    }()
+    
     // buttonArray (TODO list)
     var buttonArray = [UIButton]()
-    
-    // checkmark label
-    
-    //    let checkmarkLabel: UILabel = {
-    //        let label = UILabel()
-    //        label.text = "✔️"
-    //        label.font = UIFont.poppinsBold12()
-    //        label.translatesAutoresizingMaskIntoConstraints = false
-    //        return label
-    //    }()
+   
     
     // recipe field label
     let recipeLabel: UILabel = {
@@ -92,9 +96,33 @@ class RecipeViewController: UIViewController {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.textColor = .textAccent
-        label.font = UIFont.poppinsRegular16()
         return label
     }()
+    
+    // safari button for source link
+    let sourceButton: UIButton = {
+        let button = UIButton()
+//        button.setTitle("Go to the source", for: .normal)
+        button.setTitleColor(.textAccent, for: .normal)
+        let attributedString = NSMutableAttributedString(string: "Go to the source")
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, attributedString.length))
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.addTarget(self, action: #selector(goSafari), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func goSafari() {
+//        guard  let urlToString = element.url else { return }
+        guard  let url = URL(string: sourceURL) else { return }
+        let configuration = SFSafariViewController.Configuration()
+        let safariVC = SFSafariViewController(url: url, configuration: configuration)
+        safariVC.modalPresentationStyle = .formSheet
+        present(safariVC, animated: true, completion: nil)
+    }
+    
+    // source link var
+    var sourceURL = ""
+    
     
     var id: Int
     
@@ -142,12 +170,10 @@ extension RecipeViewController {
         for button in buttonArray {
             button.layer.cornerRadius = 10
             button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 30)
-            //            button.getShadow(button)
             button.backgroundColor = .clear
             button.setTitleColor(.textAccent, for: .normal)
-//            button.sizeToFit()
             button.titleLabel?.font = UIFont.poppinsRegular16()
-            button.titleLabel?.textColor = .textAccent
+//            button.titleLabel?.textColor = .textAccent
             button.titleLabel?.numberOfLines = 0
             button.contentHorizontalAlignment = .left
             button.backgroundColor = .clear
@@ -160,13 +186,13 @@ extension RecipeViewController {
         toDoButtonStackView.distribution = .fillEqually
         toDoButtonStackView.spacing = 20
         
-        for i in [scrollView, likesButton, titleLabel, imageView, infoStackView, toDoButtonStackView, recipeLabel] {
+        for i in [scrollView, likesButton, titleLabel, imageView, infoStackView, toDoButtonStackView, ingredientsLabel, recipeLabel, sourceButton] {
             i.translatesAutoresizingMaskIntoConstraints = false
         }
         
         view.addSubview(scrollView) // add scrollView
         
-        for i in [titleLabel, imageView, infoStackView, toDoButtonStackView, recipeLabel, likesButton] {
+        for i in [titleLabel, imageView, infoStackView, toDoButtonStackView, ingredientsLabel, recipeLabel, likesButton, sourceButton] {
             scrollView.addSubview(i)
         }
         
@@ -191,7 +217,11 @@ extension RecipeViewController {
             infoStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
             infoStackView.heightAnchor.constraint(equalToConstant: 50),
             
-            toDoButtonStackView.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 34),
+            ingredientsLabel.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 34),
+            ingredientsLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
+            ingredientsLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
+            
+            toDoButtonStackView.topAnchor.constraint(equalTo: ingredientsLabel.bottomAnchor, constant: 8),
             toDoButtonStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             toDoButtonStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
             
@@ -199,13 +229,18 @@ extension RecipeViewController {
             recipeLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             recipeLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
             recipeLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            recipeLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+//            recipeLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            recipeLabel.bottomAnchor.constraint(equalTo: sourceButton.topAnchor),
             
             likesButton.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16),
             likesButton.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -16),
             likesButton.heightAnchor.constraint(equalToConstant: 40),
-            likesButton.widthAnchor.constraint(equalToConstant: 40)
-            
+            likesButton.widthAnchor.constraint(equalToConstant: 40),
+
+            sourceButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
+            sourceButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
+            sourceButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
+            sourceButton.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
 }
@@ -247,10 +282,12 @@ extension RecipeViewController: RequestManagerDelegate {
             recipeString.setAttributes([NSAttributedString.Key.font: UIFont.poppinsBold18()!],
                                        range: NSMakeRange(0, 9))
             self.recipeLabel.attributedText = recipeString
+            
+            // refer to the source link for the click
+            self.sourceURL = recipe.sourceURL
+//            print(recipe.sourceURL)
             self.setupViews()
-            
             self.activityIndicatorView.stopAnimating()
-            
             print(recipe)
         }
     }
@@ -260,15 +297,6 @@ extension RecipeViewController: RequestManagerDelegate {
     }
     
     @objc func buttonTouched(_ sender: UIButton) {
-//        let checkmarkLabel: UILabel = {
-//            let label = UILabel()
-//            label.text = "√"
-//            label.tintColor = .red
-//            label.textColor = .red
-//            label.font = UIFont.poppinsBold16()
-//            label.translatesAutoresizingMaskIntoConstraints = false
-//            return label
-//        }()
         
         let imageView = UIImageView(image: UIImage(named: "checkmark"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -276,11 +304,8 @@ extension RecipeViewController: RequestManagerDelegate {
         if sender.subviews.count == subviewsCount {
             sender.subviews.last?.removeFromSuperview()
         } else {
-            //            sender.addSubview(checkmarkLabel)
             sender.addSubview(imageView)
             subviewsCount = sender.subviews.count
-//            print(subviewsCount)
-    
             NSLayoutConstraint.activate([
                 imageView.centerYAnchor.constraint(equalTo: sender.centerYAnchor),
                 imageView.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -10),
@@ -289,6 +314,4 @@ extension RecipeViewController: RequestManagerDelegate {
             ])
         }
     }
-    
-    
 }
