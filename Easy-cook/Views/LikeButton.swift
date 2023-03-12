@@ -4,8 +4,10 @@ class LikeButton: UIButton {
     
     static var subscribers = [Int: Set<LikeButton>]()
     static var store = UserDefaultsController()
+    static var feeed = [ShowableInCustomCell]()
+    static var testDelegate: TestDelegate?
     
-    var itemId = 0
+    var item: ShowableInCustomCell?
     
     init() {
         super.init(frame: .zero)
@@ -18,59 +20,74 @@ class LikeButton: UIButton {
     }
     
     
-    func setID(id: Int){
-        itemId = id
-        
-        if  !LikeButton.subscribers.keys.contains(id) {
-            LikeButton.subscribers[id] = Set<LikeButton>()
+    func setItem(item: ShowableInCustomCell){
+        self.item = item
+        if  !LikeButton.subscribers.keys.contains(item.id) {
+            LikeButton.subscribers[item.id] = Set<LikeButton>()
         }
         
-        LikeButton.subscribers[id]!.insert(self)
+        LikeButton.subscribers[item.id]!.insert(self)
         self.updateApperance()
     }
     
     func updateApperance() {
         
-        if isLiked {
-            
-            LikeButton.subscribers[itemId]!.forEach({
-                $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            })
-        } else {
-            
-            LikeButton.subscribers[itemId]!.forEach({
-                $0.setImage(UIImage(systemName: "heart"), for: .normal)
-            })
+        if let it = item{
+           
+            if isLiked {
+                
+                LikeButton.subscribers[it.id]!.forEach({
+                    $0.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                })
+            } else {
+                
+                LikeButton.subscribers[it.id]!.forEach({
+                    $0.setImage(UIImage(systemName: "heart"), for: .normal)
+                })
+            }
         }
-        
     }
     
     
     var isLiked: Bool {
-        return LikeButton.store.getIds().contains(itemId)
+     
+        if let it = item{
+            return LikeButton.store.getIds().contains(it.id)
+        }
+        
+        return false
     }
     
     @objc func buttonTapped() {
-        var ids = LikeButton.store.getIds()
-        if isLiked {
-            print("remove")
-            ids.remove(itemId)
-            print(ids)
-        } else {
-            print("saving")
-            ids.insert(itemId)
-            print(ids)
+       
+        if let it = item{
+          
+            var ids = LikeButton.store.getIds()
+            if isLiked {
+                print("remove")
+                ids.remove(it.id)
+                LikeButton.feeed.removeAll(where: {$0.id == it.id})
+                LikeButton.testDelegate?.removeFromFav(item: it)
+            } else {
+                print("saving")
+                ids.insert(it.id)
+                LikeButton.feeed.append(it)
+                LikeButton.testDelegate?.addToFav(item: it)
+            }
+            
+            LikeButton.store.saveFavoriteId(ids)
+            self.updateApperance()
         }
-        
-        LikeButton.store.saveFavoriteId(ids)
-        updateApperance()
     }
     
     deinit {
-        LikeButton.subscribers[itemId]!.remove(self)
-        
-        if LikeButton.subscribers[itemId]!.count == 0{
-            LikeButton.subscribers.removeValue(forKey: itemId)
+        if let it = item{
+            LikeButton.subscribers[it.id]!.remove(self)
+            
+            if LikeButton.subscribers[it.id]!.count == 0{
+                LikeButton.subscribers.removeValue(forKey: it.id)
+            }
+            
         }
     }
 }

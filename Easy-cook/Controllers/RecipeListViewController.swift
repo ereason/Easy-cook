@@ -20,7 +20,7 @@ class RecipeListViewController: BaseFeedViewController{
     //Updating amount of shoings cells it TableView
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
        
-        if indexPath.row == reciepts.count - 3 {
+        if indexPath.row >= reciepts.count - 3 {
             if isEnabled{
                 isEnabled = false
                 offset += loadNum
@@ -32,6 +32,14 @@ class RecipeListViewController: BaseFeedViewController{
                 
             }
         }
+    }
+    
+    // init custom tableView header
+     func tableView(_ tableView: UITableView,
+            viewForHeaderInSection section: Int) -> UIView? {
+       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: StringConstants.sectiontHeaderIndent) as! TableViewTopCustomHeader
+       view.title.text = "Popular recipes"
+       return view
     }
 }
 

@@ -55,13 +55,7 @@ class BaseFeedViewController: UIViewController{
     
     
   
-    // init custom tableView header
-     func tableView(_ tableView: UITableView,
-            viewForHeaderInSection section: Int) -> UIView? {
-       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: StringConstants.sectiontHeaderIndent) as! TableViewTopCustomHeader
-       view.title.text = "Popular recipes"
-       return view
-    }
+ 
     
 }
 
@@ -80,7 +74,7 @@ extension BaseFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let recieptsList = reciepts[indexPath.row]
         cell.set(recieptList: recieptsList)
         
-        cell.recieptLikeButton.setID(id: reciepts[indexPath.row].id)
+        cell.recieptLikeButton.setItem(item: reciepts[indexPath.row])
         cell.recieptLikeButton.updateApperance()
         return cell
     }

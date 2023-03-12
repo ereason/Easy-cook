@@ -8,7 +8,6 @@ class RecipeViewController: UIViewController {
     
     var subviewsCount = Int()
     
-    //Collection View
     var collectionView: UICollectionView!
     
     var activityIndicatorView: UIActivityIndicatorView = { //indicator
@@ -90,7 +89,6 @@ class RecipeViewController: UIViewController {
     var buttonArray = [UIButton]()
    
     
-    // recipe field label
     let recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Direction"
@@ -100,10 +98,9 @@ class RecipeViewController: UIViewController {
         return label
     }()
     
-    // safari button for source link
     let sourceButton: UIButton = {
         let button = UIButton()
-//        button.setTitle("Go to the source", for: .normal)
+
         button.setTitleColor(.textAccent, for: .normal)
         let attributedString = NSMutableAttributedString(string: "Go to the source")
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, attributedString.length))
@@ -113,7 +110,6 @@ class RecipeViewController: UIViewController {
     }()
     
     @objc func goSafari() {
-//        guard  let urlToString = element.url else { return }
         guard  let url = URL(string: sourceURL) else { return }
         let configuration = SFSafariViewController.Configuration()
         let safariVC = SFSafariViewController(url: url, configuration: configuration)
@@ -121,7 +117,6 @@ class RecipeViewController: UIViewController {
         present(safariVC, animated: true, completion: nil)
     }
     
-    // source link var
     var sourceURL = ""
     
     
@@ -129,7 +124,6 @@ class RecipeViewController: UIViewController {
     
     init(_ id: Int) {
         self.id = id
-        likesButton.setID(id: id)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -160,8 +154,7 @@ extension RecipeViewController {
         activityIndicatorView.center = view.center
     }
     
-    func setupViews() { // masks and adding on view
-        // time, servings and likes label
+    func setupViews() {
         let infoStackView = UIStackView(arrangedSubviews: [timeLabel, servingLabel, likesLabel])
         infoStackView.axis = .horizontal
         infoStackView.alignment = .fill
@@ -174,13 +167,12 @@ extension RecipeViewController {
             button.backgroundColor = .clear
             button.setTitleColor(.textAccent, for: .normal)
             button.titleLabel?.font = UIFont.poppinsRegular16()
-//            button.titleLabel?.textColor = .textAccent
             button.titleLabel?.numberOfLines = 0
             button.contentHorizontalAlignment = .left
             button.backgroundColor = .clear
         }
         
-        // ingredients stck
+
         let toDoButtonStackView = UIStackView(arrangedSubviews: buttonArray)
         toDoButtonStackView.axis = .vertical
         toDoButtonStackView.alignment = .fill
@@ -191,7 +183,7 @@ extension RecipeViewController {
             i.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        view.addSubview(scrollView) // add scrollView
+        view.addSubview(scrollView)
         
         for i in [titleLabel, imageView, infoStackView, toDoButtonStackView, ingredientsLabel, recipeLabel, likesButton, sourceButton] {
             scrollView.addSubview(i)
@@ -230,7 +222,6 @@ extension RecipeViewController {
             recipeLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
             recipeLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
             recipeLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-//            recipeLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             recipeLabel.bottomAnchor.constraint(equalTo: sourceButton.topAnchor),
             
             likesButton.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16),
@@ -252,16 +243,17 @@ extension RecipeViewController: RequestManagerDelegate {
         
         DispatchQueue.main.async {
             
+            self.likesButton.setItem(item: recipe)
+            
             self.titleLabel.text = recipe.title // title
             
             self.imageView.kf.setImage(with: URL(string: recipe.image))
             
-            // info labels
+        
             self.timeLabel.text = "\(recipe.minutes) \nminutes"
             self.servingLabel.text = "\(recipe.servings) \nservings"
             self.likesLabel.text = "\(recipe.likes) \nlikes"
             
-            // ingredients button
             for i in 0...recipe.ingredients.count - 1 {
                 let originalIngridients = recipe.ingredients[i].original
                 //                let button = UIButton(type: .system)
@@ -271,7 +263,7 @@ extension RecipeViewController: RequestManagerDelegate {
                 self.buttonArray.append(button)
             }
             
-            // recipe label
+
             var recipeText = recipe.steps.isEmpty ? "\(recipe.sourceURL)" : "\(recipe.steps)"
             
             let regex = try! NSRegularExpression(pattern: "(^\\[\"|\"\\]$)", options: .caseInsensitive)
@@ -284,9 +276,9 @@ extension RecipeViewController: RequestManagerDelegate {
                                        range: NSMakeRange(0, 9))
             self.recipeLabel.attributedText = recipeString
             
-            // refer to the source link for the click
+        
             self.sourceURL = recipe.sourceURL
-//            print(recipe.sourceURL)
+
             self.setupViews()
             self.activityIndicatorView.stopAnimating()
             print(recipe)

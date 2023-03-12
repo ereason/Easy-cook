@@ -1,6 +1,18 @@
 import UIKit
 
-class FavoriteListViewController: BaseFeedViewController{
+class FavoriteListViewController: BaseFeedViewController, TestDelegate{
+   
+    func removeFromFav(item: ShowableInCustomCell) {
+        reciepts.removeAll(where: { $0.id == item.id})
+        self.tableView.reloadData()
+    }
+    
+
+    func addToFav(item: ShowableInCustomCell) {
+        reciepts.append(item)
+        self.tableView.reloadData()
+    }
+    
     
     var manager = RequestFavoriteManager()
 
@@ -8,27 +20,30 @@ class FavoriteListViewController: BaseFeedViewController{
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         manager.delegate = self
-        // updating data for table view
+        LikeButton.testDelegate = self
+        
         manager.fetchRecipe()
         configureTableView()
-        // Register the custom header view.
         tableView.register(TableViewTopCustomHeader.self, forHeaderFooterViewReuseIdentifier: StringConstants.sectiontHeaderIndent)
     }
 
-    // Override 2 methods to dismiss empty space in a top of Table view (this space auto creates for navigationBar
+   
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
-        reciepts.removeAll()
-        self.tableView.reloadData()
         self.navigationController?.navigationBar.isHidden = true
-        manager.fetchRecipe()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-     
         self.navigationController?.navigationBar.isHidden = false
-       
+    }
+    // init custom tableView header
+     func tableView(_ tableView: UITableView,
+            viewForHeaderInSection section: Int) -> UIView? {
+       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: StringConstants.sectiontHeaderIndent) as! TableViewTopCustomHeader
+       view.title.text = "Liked recipes"
+       return view
     }
 }
 
@@ -43,11 +58,7 @@ extension FavoriteListViewController: RequestFavoriteManagerDelegate{
             })
             self.tableView.reloadData()
         }
-        
- 
-        print( self.reciepts.count)
     }
-    
     
     func didFailWithError(error: Error) {
         print(error)

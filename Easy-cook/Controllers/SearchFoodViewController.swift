@@ -3,12 +3,16 @@ import UIKit
 class SearchFoodViewController: UIViewController, RecipeCategoryCollectionViewDelegate, CategoryCollectionViewDelegate {
   
     func pickCategoty(pickedCategory: String) {
-        recipeCategoryCollectionView.clear()
-        searchString =  ""
-        searchBar.text = ""
-        offset  = 0
-        request = .category(cat: pickedCategory, number: loadNum, offset: offset)
-        manager.fetchRecipe(query: request!)
+        if isEnabled{
+            isEnabled = false
+            recipeCategoryCollectionView.clear()
+            searchString =  ""
+            searchBar.text = ""
+            offset  = 0
+            request = .category(cat: pickedCategory, number: loadNum, offset: offset)
+            manager.fetchRecipe(query: request!)
+            
+        }
     }
     
     
@@ -45,10 +49,10 @@ class SearchFoodViewController: UIViewController, RecipeCategoryCollectionViewDe
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Popular category"
+        label.text = "Explore more"
         label.font = .poppinsBold40()
         label.numberOfLines = 0
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.textColor = .textAccent
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -119,7 +123,6 @@ extension SearchFoodViewController: UISearchBarDelegate{
         recipeCategoryCollectionView.clear()
         searchString = searchBar.text!.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
         offset  = 0
-        print(searchString)
         request = .search(query: searchString, number: loadNum, offset: offset)
         manager.fetchRecipe(query: request!)
         searchActive = false
@@ -150,11 +153,12 @@ extension SearchFoodViewController {
             categoryCollectionView.heightAnchor.constraint(equalToConstant: 68)
         ])
         
+
         NSLayoutConstraint.activate([
-            recipeCategoryCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            recipeCategoryCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            recipeCategoryCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            recipeCategoryCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             recipeCategoryCollectionView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant: 19),
-            recipeCategoryCollectionView.heightAnchor.constraint(equalToConstant: 458)
+            recipeCategoryCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 }

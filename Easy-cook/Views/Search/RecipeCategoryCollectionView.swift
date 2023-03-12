@@ -55,7 +55,7 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
         
         cell.mainImage.kf.setImage(with: URL(string: cells[indexPath.row].image))
         cell.recipeLabel.text = cells[indexPath.row].title
-        cell.recieptLikeButton.setID(id:  cells[indexPath.row].id)
+        cell.recieptLikeButton.setItem(item:  cells[indexPath.row])
         
         return cell
     }
@@ -67,7 +67,7 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
     //Updating amount of shoings cells it TableView
     internal func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if indexPath.row == cells.count - 3 {
+        if indexPath.row >= cells.count - 3 {
             actionDelegate?.loadMore()
         }
     }
@@ -77,6 +77,6 @@ class RecipeCategoryCollectionView: UICollectionView, UICollectionViewDelegate, 
 //MARK: - sizeForItem
 extension RecipeCategoryCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return  CGSize(width: 300, height: 458)
+        return  CGSize(width: collectionView.frame.width-100, height: collectionView.frame.height)
     }
 }
